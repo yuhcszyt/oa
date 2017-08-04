@@ -80,6 +80,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- 通用Mapper -->
+		<dependency>
+			<groupId>com.github.abel533</groupId>
+			<artifactId>mapper</artifactId>
+			<version>${mapper.version}</version>
+		</dependency>
+	
 		<!-- MySql -->
 		<dependency>
 			<groupId>mysql</groupId>
