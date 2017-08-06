@@ -22,12 +22,10 @@ VALUES ('111111','系统管理员',to_date('1980/3/3','YYYY-MM-DD'),1,'138001380
 
 INSERT INTO `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ( '111111','A经理','123','1','123','123','2',SYSDATE(),'123');
 
-
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','A经理',STR_TO_DATE('1987/5/21','YYYY-MM-DD'),1,'13800138002','广东省深圳市',1,SYSDATE(),'127.0.0.1');
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','B经理',STR_TO_DATE('1985/9/30','YYYY-MM-DD'),1,'13800138003','广东省深圳市',1,SYSDATE(),'127.0.0.1');
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','A员工',STR_TO_DATE('1990/8/13','YYYY-MM-DD'),1,'13800138004','广东省深圳市',2,SYSDATE(),'127.0.0.1');
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','B员工',STR_TO_DATE('1988/11/6','YYYY-MM-DD'),1,'13800138005','广东省深圳市',2,SYSDATE(),'127.0.0.1');
-
 
 -- 创建邮件表
 CREATE TABLE  IF NOT EXISTS  t_email (
@@ -56,7 +54,7 @@ CREATE TABLE IF NOT EXISTS t_attend(
   starttime DATE, 
   endtime DATE, 
   days INT, 
-  reasons LONG, 
+  reasons varchar(1000), 
   nickname VARCHAR(30),  
   posttime DATE,
   postip VARCHAR(30),  
