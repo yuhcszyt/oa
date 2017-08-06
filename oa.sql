@@ -2,9 +2,6 @@
 CREATE DATABASE OA;
 USE OA;
 
--------------------------------------------------------------------------------------
---昌哥花了一下午的代码
---创建用户表
 CREATE TABLE t_user (
   username VARCHAR(10),
   `password` VARCHAR(30) NOT NULL,
@@ -19,11 +16,7 @@ CREATE TABLE t_user (
   PRIMARY KEY(`username`)
   
 );
-----------------------------------诡异的分割线---------------------------------------------------------------------
 
-  -------------------------------------------------------------------------------------
---昌哥花了一下午的代码
---插入用户数据
 INSERT INTO t_user (`username`,`password`,nickname,birthday,sex,mobile,address,rank,regtime,regip)
 VALUES ('111111','系统管理员',to_date('1980/3/3','YYYY-MM-DD'),1,'13800138001','广东省深圳市',,'127.0.0.1');
 
@@ -35,5 +28,60 @@ INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`addr
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','A员工',STR_TO_DATE('1990/8/13','YYYY-MM-DD'),1,'13800138004','广东省深圳市',2,SYSDATE(),'127.0.0.1');
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','B员工',STR_TO_DATE('1988/11/6','YYYY-MM-DD'),1,'13800138005','广东省深圳市',2,SYSDATE(),'127.0.0.1');
 
-----------------------------------诡异的分割线---------------------------------------------------------------------
+
+--创建邮件表
+CREATE TABLE  IF NOT EXISTS  t_email (
+ -- ID int(4),
+ -- recipients VARCHAR(30) NOT NULL,
+  `id` INT(4) NOT NULL, 
+  `recipients` VARCHAR(30) NOT NULL, 
+  sender VARCHAR(30) NOT NULL, 
+  title VARCHAR(100), 
+  content LONG, 
+  enclosure VARCHAR(100), 
+  sendtime DATE DEFAULT 0, 
+  sendip VARCHAR(20),  
+  isread INT DEFAULT 0, 
+  readtime DATE, 
+  isdelete INT DEFAULT 0,
+  PRIMARY KEY(`id`)
+);
+
+
+
+--创建考勤表
+CREATE TABLE IF NOT EXISTS t_attend(
+  `id`  INT(4)  NOT NULL,
+  applicant VARCHAR(30),
+  starttime DATE, 
+  endtime DATE, 
+  days INT, 
+  reasons LONG, 
+  nickname VARCHAR(30),  
+  posttime DATE,
+  postip VARCHAR(30),  
+  auditor VARCHAR(30),  
+  `status` INT DEFAULT 0, 
+  audittime DATE,
+  PRIMARY KEY(`id`)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
