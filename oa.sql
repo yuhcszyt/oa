@@ -29,7 +29,7 @@ INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`addr
 INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','B员工',STR_TO_DATE('1988/11/6','YYYY-MM-DD'),1,'13800138005','广东省深圳市',2,SYSDATE(),'127.0.0.1');
 
 
---创建邮件表
+-- 创建邮件表
 CREATE TABLE  IF NOT EXISTS  t_email (
  -- ID int(4),
  -- recipients VARCHAR(30) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE  IF NOT EXISTS  t_email (
 
 
 
---创建考勤表
+-- 创建考勤表
 CREATE TABLE IF NOT EXISTS t_attend(
   `id`  INT(4)  NOT NULL,
   applicant VARCHAR(30),
