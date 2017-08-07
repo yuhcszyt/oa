@@ -10,7 +10,7 @@
 	<constant name="struts.ui.theme" value="simple"></constant>
 	
 	<!--  公共项 -->
-	 <package name="common" namespace="/" extends="struts-default"> -->
+	 <package name="common" namespace="/" extends="struts-default"> 
 		<!-- 2.2 拦截器配置 
 			* 先声明
 			方法1：每一个action单独使用,需要多次引用，否则默认将被覆盖
