@@ -3,12 +3,14 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
+	<!-- 1.2标签主题，简单风格 -->
+	<constant name="struts.ui.theme" value="simple"></constant>
 	<!-- 
 		<constant name="struts.objectFactory" value="spring"/>
 	 -->
-	<package name="basicstruts2" extends="struts-default">
-		<default-interceptor-ref name="myStack"/>
+	<package name="common" namespace="/" extends="struts-default">
+
 		
 		<!-- 全局结果集定义 -->
 		<global-results>
