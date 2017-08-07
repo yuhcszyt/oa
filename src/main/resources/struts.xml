@@ -17,7 +17,15 @@
 		</global-results>
 		
 		<action name="login" class="com.honganwei.action.LoginAction" >
-					
+		</action>
+		
+		<!-- 	action.class 默认值：ActionSupport
+				action.method 默认值：execute
+				result.name 默认值：success
+					 -->
+		
+		<action  name="uiAction_*_*">
+			<result>/WEB-INF/views/{1}/{2}.jsp</result>
 		</action>
 	</package>
 </struts>
