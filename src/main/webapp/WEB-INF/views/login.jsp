@@ -77,7 +77,7 @@
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<form action="/login.action" method="post">
+		<form action="${pageContext.request.contextPath}/login.action" method="post">
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
