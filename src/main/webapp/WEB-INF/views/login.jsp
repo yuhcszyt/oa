@@ -11,11 +11,12 @@
 	* {
 		margin: 0;
 		padding: 0;
+		 background: url(${pageContext.request.contextPath}/Images/744632675023512131.jpg);
 	}
 	
 	body {
 		font: 12px 宋体;
-		background: #4BB8EF url(/Images/bg.gif) repeat-x;
+		/* background: #4BB8EF url(/Images/bg.gif) repeat-x; */
 	}
 	
 	img {
@@ -26,14 +27,14 @@
 		width: 100%;
 		height: 186px;
 		margin: 147px auto 0;
-		background: url(/Images/login_01.gif) no-repeat center 0;
+	/* 	background: url(/Images/login_01.gif) no-repeat center 0; */
 	}
 	
 	.login-area {
 		width: 100%;
 		height: 140px;
 		margin: 0 auto;
-		background: url(/Images/login_02.gif) no-repeat center 0;
+		/* background: url(/Images/login_02.gif) no-repeat center 0; */
 	}
 	
 	.login-area form {
