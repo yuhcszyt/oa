@@ -29,7 +29,7 @@
 		
 	</package>
 	
-	<package name="email" namespace="email" extends="struts-default">
+	<package name="email" namespace="/email" extends="struts-default">
 		
 		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
 			<result name="write">/WEB-INF/views/writeEmail.jsp</result>
