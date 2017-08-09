@@ -33,8 +33,6 @@ public class Email {
 	
 	private Date sendTime;
 	
-	private String sendIp;
-	
 	private Integer isRead;
 	
 	private Date readtime;
@@ -99,13 +97,7 @@ public class Email {
 		this.sendTime = sendTime;
 	}
 
-	public String getSendIp() {
-		return sendIp;
-	}
 
-	public void setSendIp(String sendIp) {
-		this.sendIp = sendIp;
-	}
 
 	public Integer getIsRead() {
 		return isRead;
