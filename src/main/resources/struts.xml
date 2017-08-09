@@ -27,5 +27,9 @@
 		<action  name="uiAction_*_*">
 			<result>/WEB-INF/views/{1}/{2}.jsp</result>
 		</action>
+		
 	</package>
+	
+	<include file="stuts2-tuser.xml"></include>
+	
 </struts>
