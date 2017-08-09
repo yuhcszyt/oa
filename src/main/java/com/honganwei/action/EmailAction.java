@@ -1,8 +1,8 @@
 package com.honganwei.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import com.honganwei.po.Email;
 
-public class EmailAction extends ActionSupport{
+public class EmailAction extends BaseAction<Email>{
 	
 	public String writeEmail(){
 		

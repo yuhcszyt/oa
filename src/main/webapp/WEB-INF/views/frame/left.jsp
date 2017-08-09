@@ -23,13 +23,13 @@
 							邮件管理
 						</dt>
 						<dd>
-							<a href="mail/write.action" target="right">写邮件</a>
+							<a href="email/write.action" target="right">写邮件</a>
 						</dd>
 						<dd>
-							<a href="mail/receive.action" target="_self">收邮件</a>
+							<a href="email/receive.action" target="right">收邮件</a>
 						</dd>
 						<dd>
-							<a href="mail/garage.action" target="_self">垃圾邮件</a>
+							<a href="email/garage.action" target="right">垃圾邮件</a>
 						</dd>
 					</dl>
 					<dl>
