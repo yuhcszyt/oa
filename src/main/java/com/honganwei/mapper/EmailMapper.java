@@ -3,9 +3,9 @@ package com.honganwei.mapper;
 import java.util.List;
 
 import com.honganwei.mapper.base.mapper.BaseMapper;
-import com.honganwei.po.Email;
+import com.honganwei.po.TEmail;
 
-public interface EmailMapper extends BaseMapper<Email>{
+public interface EmailMapper extends BaseMapper<TEmail>{
 
 	
 }
