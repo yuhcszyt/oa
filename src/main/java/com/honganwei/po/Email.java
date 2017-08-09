@@ -1,4 +1,4 @@
-package pojo;
+package com.honganwei.po;
 
 import java.util.Date;
 
