@@ -15,14 +15,14 @@
 		<!-- mybatis-config.xml -->
 	<!-- 	<property name="configLocation" value="classpath:spring/applicationContext-mybatis.xml"/> -->
 		<!-- 别名包 -->
-		<property name="typeAliasesPackage" value="com.honganwei.pojo"/>
+		<property name="typeAliasesPackage" value="com.honganwei.po"/>
 		<!-- mapper.xml -->
-	<!-- 	<property name="mapperLocations" value="classpath:mappers/*.xml"/> -->
+		<property name="mapperLocations" value="classpath:mappers/*.xml"/> 
 	</bean>
 	
 	<!-- 定义Mapper接口扫描器 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<!-- 扫描mapper包 -->
-		<property name="basePackage" value="com.jt.manage.mapper"/>
+		<property name="basePackage" value="com.honganwei.mapper"/>
 	</bean>
 </beans>

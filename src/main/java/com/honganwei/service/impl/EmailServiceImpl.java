@@ -3,11 +3,13 @@ package com.honganwei.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.honganwei.mapper.EmailMapper;
 import com.honganwei.po.TEmail;
 import com.honganwei.service.EmailService;
 
+@Service
 public class EmailServiceImpl implements EmailService<TEmail>{
 
 	@Autowired
