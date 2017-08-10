@@ -4,9 +4,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.honganwei.mapper.UserMapper">
-	
-	<select id="findAll"  resultType="Tuser">
-		Select * from t_email
+
+	<select id="findAll" resultType="Tuser">
+		SELECT * FROM T_user
 	</select>
-	
+
 </mapper>
