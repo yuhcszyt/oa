@@ -98,7 +98,7 @@
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<form id="loginId">
+		<form action="${pageContext.request.contextPath}/userAction_login.action" method="post">
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
@@ -111,7 +111,7 @@
 			
 			<input type="submit" class="login-sub" value="" />
 			<br/>
-				<b><font color="red"><s:property value="message"/></font></b>
+				<b><font color="red"></font></b>
 		</form>
 	</div>
 	<div class="login-copyright"></div>

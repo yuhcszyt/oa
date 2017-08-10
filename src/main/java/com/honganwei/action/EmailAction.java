@@ -27,8 +27,6 @@ public class EmailAction extends BaseAction<TEmail>{
 		
 		List<TUser>list = userService.find();
 		ActionContext.getContext().put("userList",list);
-		
 		return "write";
 	}
-	
 }

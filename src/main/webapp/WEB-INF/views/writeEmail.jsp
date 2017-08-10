@@ -15,8 +15,10 @@
 			<table width="90%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
 					<td align="right" width="30%">收件人：</td>
-					<td align="left"><s:select list="userList" name="user"
-				listKey="userId" listValue="username"
+
+
+					<td align="left"><s:select list="userList" name="username"
+				listKey="username" listValue="username"
 				headerKey="" headerValue="----请--选--择----"
 			>
 			</s:select></td>

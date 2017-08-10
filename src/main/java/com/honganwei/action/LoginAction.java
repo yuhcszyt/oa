@@ -3,8 +3,10 @@ package com.honganwei.action;
 
 
 
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
+
 
 
 import com.honganwei.po.TUser;
@@ -22,7 +24,12 @@ public  class LoginAction extends ActionSupport implements ModelDriven<TUser>{
 
 	}
 
-	
+
+	public String login(){
+		
+		return "login";
+	}
+
 }
 
 
