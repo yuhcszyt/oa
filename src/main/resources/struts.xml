@@ -20,12 +20,24 @@
 		</action>
 		
 		<action name="mailWrite" class="com.honganwei.action.EmailAction" method="writeEmail">
-			<result name="write">/WEB-INF/views/email.jsp</result>
+			<result name="write">/WEB-INF/views/writeEmail.jsp</result>
 		</action>
 		
 		<action  name="uiAction_*_*">
 			<result>/WEB-INF/views/{1}/{2}.jsp</result>
 		</action>
+		
 	</package>
+	
+	<package name="email" namespace="/email" extends="struts-default">
+		
+		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
+			<result name="write">/WEB-INF/views/writeEmail.jsp</result>
+		</action>
+		
+	</package>
+	
+	
+	<include file="stuts2-tuser.xml"></include>
 	
 </struts>

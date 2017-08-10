@@ -1,9 +1,12 @@
 package com.honganwei.action;
 
-import com.opensymphony.xwork2.ActionSupport;
 
-public class LoginAction extends ActionSupport{
 
+import com.honganwei.po.TUser;
+
+
+public class LoginAction extends BaseAction<TUser>{
+	
 	 public String execute(){
 		 
 		 

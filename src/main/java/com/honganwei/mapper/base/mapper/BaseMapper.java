@@ -6,7 +6,7 @@ public interface BaseMapper<T> {
 
 	public List<T> findAll();
 	
-	public void insert();
+	public void insert(T t);
 	
 	public void delete(T t);
 	

@@ -1,8 +1,8 @@
-package pojo;
+package com.honganwei.po;
 
 import java.util.Date;
 
-public class Email {
+public class TEmail {
 
 	
 /*	  `id` INT(4) NOT NULL AUTO_INCREMENT,

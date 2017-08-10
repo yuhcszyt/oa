@@ -1,10 +1,34 @@
 package com.honganwei.action;
 
-import com.opensymphony.xwork2.ActionSupport;
+import java.util.List;
 
-public class EmailAction extends ActionSupport{
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.honganwei.mapper.UserMapper;
+import com.honganwei.po.TEmail;
+import com.honganwei.po.TUser;
+import com.honganwei.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
+
+public class EmailAction extends BaseAction<TEmail>{
+	
+	@Autowired
+	private UserService userService;
+	
+	/*public UserService getUserService() {
+		return userService;
+	}
+
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+*/
 	
 	public String writeEmail(){
+		
+		List<TUser>list = userService.find();
+		ActionContext.getContext().put("userList",list);
 		
 		return "write";
 	}

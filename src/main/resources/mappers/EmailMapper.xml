@@ -6,17 +6,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.honganwei.mapper.EmailMapper">
 	
 	
-	<select id="findAll"  resultType="Email">
+	<select id="findAll"  resultType="Temail">
 		Select * from t_email
 	</select>
 	
-	<insert id="insert" parameterType="Email">
+	<insert id="insert" parameterType="Temail">
 		INSERT INTO t_email (recipients,sender,title,content,enclosure,sendtime,isread,readtime,isdelete,userId)
 		VALUES(#{recipients},#{sender},#{title},#{content},#{enclosure},#{sendTime},#{isRead},#{readtime},
 		#{isdelete},#{UserId}) 
 	</insert>
 	
-	<delete id="delete" parameterType="Email">
+	<delete id="delete" parameterType="Temail">
 	delete form email t where t.userId=#{userId} and t.id=#{id} 
 	</delete>
 </mapper>

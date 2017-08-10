@@ -78,7 +78,7 @@
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<form action="${pageContext.request.contextPath}/login.action" method="post">
+		<form action="${pageContext.request.contextPath}/login.action" method="get">
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
@@ -86,7 +86,8 @@
 			<label>
 				密&nbsp;&nbsp;码：
 			</label>
-			 <input type="password" name="u.password" /> 
+
+			<input type="password" name="u.password" />
 			
 			<input type="submit" class="login-sub" value="" />
 			<br/>
