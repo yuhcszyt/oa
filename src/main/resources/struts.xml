@@ -12,17 +12,14 @@
 	<package name="common" namespace="/" extends="struts-default">
 	
 	<!-- 全局结果集定义 -->
-		<global-results>
+		 <global-results>
 			<result name="login">/WEB-INF/views/manage.jsp</result>
 		</global-results>
 		
-		<action name="login" class="com.honganwei.action.LoginAction" >
-		</action>
 		
-		<!-- 	action.class 默认值：ActionSupport
-				action.method 默认值：execute
-				result.name 默认值：success
-					 -->
+		<action name="mailWrite" class="com.honganwei.action.EmailAction" method="writeEmail">
+			<result name="write">/WEB-INF/views/email.jsp</result>
+		</action>
 		
 		<action  name="uiAction_*_*">
 			<result>/WEB-INF/views/{1}/{2}.jsp</result>
@@ -30,6 +27,6 @@
 		
 	</package>
 	
-	<include file="stuts2-tuser.xml"></include>
+	<include file="stuts2-tuser2.xml"></include>
 	
 </struts>

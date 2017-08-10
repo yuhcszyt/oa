@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.honganwei.mapper.EmailMapper">
+	
+	
+	<select id="findAll"  resultType="Email">
+		Select * from t_email
+	</select>
+	
+	<insert id="insert" parameterType="Email">
+		INSERT INTO t_email (recipients,sender,title,content,enclosure,sendtime,isread,readtime,isdelete,userId)
+		VALUES(#{recipients},#{sender},#{title},#{content},#{enclosure},#{sendTime},#{isRead},#{readtime},
+		#{isdelete},#{UserId}) 
+	</insert>
+	
+	<delete id="delete" parameterType="Email">
+	delete form email t where t.userId=#{userId} and t.id=#{id} 
+	</delete>
+</mapper>

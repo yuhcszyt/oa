@@ -10,11 +10,11 @@
 <style type="text/css"> 
 
 </style> 
-<frameset rows="90,*,10" framespacing="0px" frameborder="no">
+<frameset rows="30%,*,20%" framespacing="0px" frameborder="no">
 	<frame src="${pageContext.request.contextPath}/uiAction_frame_top.action" scrolling="no"/>
-    <frameset id="main" cols="200,600,*" framespacing="0px" frameborder="no" >
-        <frame src="${pageContext.request.contextPath}/uiAction_frame_left.action" scrolling="no"/>
-        <frame src="Images/744632675023512131.jpg" scrolling="no"/>
+    <frameset id="main" cols="30%,70%" framespacing="0px" frameborder="no" >
+        <frame src="${pageContext.request.contextPath}/uiAction_frame_left.action" name=left scrolling="no"/>
+<!--         <frame src="Images/744632675023512131.jpg" scrolling="no"/> -->
         <frame src="${pageContext.request.contextPath}/uiAction_frame_right.action" name="right" scrolling="yes"/>
 	</frameset>
 	<frame src="${pageContext.request.contextPath}/uiAction_frame_bottom.action" scrolling="no"/>

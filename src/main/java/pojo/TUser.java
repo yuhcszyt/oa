@@ -1,14 +1,6 @@
-package com.honganwei.po;
+package pojo;
 
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 
 public class TUser implements java.io.Serializable {
@@ -25,11 +17,32 @@ public class TUser implements java.io.Serializable {
 	private Date regtime;
 	private String regip;
 	
+
+	
+	public TUser() {
+	}
+	
+	public TUser(Integer username, String password) {
+		this.username = username;
+		this.password = password;
+	}
+	
+	public TUser(Integer username, String password, String nickname, Date birthday, Integer sex, String mobile,
+			String address, Integer rank, Date regtime, String regip) {
+		this.username = username;
+		this.password = password;
+		this.nickname = nickname;
+		this.birthday = birthday;
+		this.sex = sex;
+		this.mobile = mobile;
+		this.address = address;
+		this.rank = rank;
+		this.regtime = regtime;
+		this.regip = regip;
+	}
+
 	
 	
-	
-	
-	@Override
 	public String toString() {
 		return "TUser [username=" + username + ", password=" + password + ", nickname=" + nickname + ", birthday="
 				+ birthday + ", sex=" + sex + ", mobile=" + mobile + ", address=" + address + ", rank=" + rank
