@@ -16,7 +16,7 @@
 				<tr>
 					<td align="right" width="30%">收件人：</td>
 					<td align="left"><s:select list="userList" name="user"
-				listKey="userId" listValue="userName"
+				listKey="userId" listValue="username"
 				headerKey="" headerValue="----请--选--择----"
 			>
 			</s:select></td>
