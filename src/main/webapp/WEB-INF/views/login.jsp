@@ -82,11 +82,11 @@
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
-			<!-- <input type="text" name="u.username" /> -->
+			 <input type="text" name="u.username" /> 
 			<label>
 				密&nbsp;&nbsp;码：
 			</label>
-			<!-- <input type="password" name="u.password" /> -->
+			 <input type="password" name="u.password" /> 
 			
 			<input type="submit" class="login-sub" value="" />
 			<br/>
