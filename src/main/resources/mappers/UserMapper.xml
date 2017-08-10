@@ -5,8 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.honganwei.mapper.UserMapper">
 
-	<select id="findAll" resultType="Tuser">
-		SELECT * FROM T_user
+	
+	
+	<select id="findAll"  resultType="Tuser">
+		Select * from t_user
 	</select>
 
 </mapper>
