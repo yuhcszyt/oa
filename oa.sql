@@ -14,7 +14,6 @@ CREATE TABLE t_user (
   regtime DATE, 
   regip VARCHAR(20),
   PRIMARY KEY(`username`)
-  
 );
 
 INSERT INTO t_user (`username`,`password`,nickname,birthday,sex,mobile,address,rank,regtime,regip)

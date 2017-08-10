@@ -3,9 +3,7 @@ package com.honganwei.action;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 
-import com.honganwei.mapper.UserMapper;
 import com.honganwei.po.TEmail;
 import com.honganwei.po.TUser;
 import com.honganwei.service.UserService;
