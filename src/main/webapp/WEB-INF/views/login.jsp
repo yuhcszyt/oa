@@ -98,19 +98,20 @@
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<s:form action="LoginAction_login.action" namespace="/" method="get">
+		<form id="loginId">
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
-			<s:text name="username"></s:text>
+			<input type="text" name="u.username" />
 			<label>
 				密&nbsp;&nbsp;码：
 			</label>
-			<s:password name="password"></s:password>
-			<s:submit cssClass="login-sub" value="登陆"></s:submit>
+			<input type="password" name="u.password" />
+			
+			<input type="submit" class="login-sub" value="" />
 			<br/>
 				<b><font color="red"><s:property value="message"/></font></b>
-		</s:form>
+		</form>
 	</div>
 	<div class="login-copyright"></div>
 </body>
