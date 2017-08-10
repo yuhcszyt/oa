@@ -8,10 +8,10 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 
+	public static final String HOME = "home";
+	
 	protected T model;
-	@Override
 	public T getModel() {
-		// TODO Auto-generated method stub
 		return model;
 	}
 

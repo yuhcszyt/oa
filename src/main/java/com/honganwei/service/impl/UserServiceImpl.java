@@ -14,19 +14,23 @@ public class UserServiceImpl implements UserService<TUser>{
 	
 	@Autowired
 	private UserMapper userMapper;
-	
+
 	@Override
 	public List<TUser> find() {
-		return userMapper.findAll();
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
 	public void update(TUser t) {
-		userMapper.update(t);
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void delete(TUser t) {
-		userMapper.delete(t);
+		// TODO Auto-generated method stub
+		
 	}
+	
 }

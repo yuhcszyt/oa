@@ -31,11 +31,8 @@
 		<property name="minConnectionsPerPartition" value="5" />
 	</bean>
 	
-	<bean id="userService" class="com.honganwei.service.impl.UserServiceImpl"/>
-	
-	<bean id="emailService" class="com.honganwei.service.impl.EmailServiceImpl"/>
-	
 	
 	<context:component-scan base-package="com.honganwei"></context:component-scan>
+
 	
 </beans>
