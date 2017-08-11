@@ -98,7 +98,7 @@
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<form id="loginId">
+		<form id="loginform" name="loginform" method="post" action="userAction_login.action" >
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
@@ -108,7 +108,11 @@
 			</label>
 			<input type="password" name="u.password" />
 			
-			<input type="submit" class="login-sub" value="" />
+			<a onclick="document.getElementById('loginform').submit();" href="#" id="loginform:j_id19" name="loginform:j_id19">
+						<span
+							id="loginform:loginBtn" class="login-sub"
+							style="margin-top:-36px;">登录</span>
+						</a>
 			<br/>
 				<b><font color="red"><s:property value="message"/></font></b>
 		</form>
