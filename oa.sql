@@ -41,7 +41,7 @@ CREATE TABLE `t_email` (
   `userId` INT(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
-
+ALTER TABLE `oa`.`t_email`     CHANGE `userId` `username` INT(4) NOT NULL;
 
 
 -- 创建考勤表

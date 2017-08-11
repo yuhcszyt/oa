@@ -98,7 +98,8 @@
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<form id="loginform" name="loginform" method="post" action="userAction_login.action" >
+
+		<form action="${pageContext.request.contextPath}/userAction_login.action" method="post">
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
@@ -114,7 +115,7 @@
 							style="margin-top:-36px;">登录</span>
 						</a>
 			<br/>
-				<b><font color="red"><s:property value="message"/></font></b>
+				<b><font color="red"></font></b>
 		</form>
 	</div>
 	<div class="login-copyright"></div>

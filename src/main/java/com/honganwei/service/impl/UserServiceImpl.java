@@ -17,20 +17,17 @@ public class UserServiceImpl implements UserService<TUser>{
 
 	@Override
 	public List<TUser> find() {
-		// TODO Auto-generated method stub
-		return null;
+		return userMapper.findAll();
 	}
 
 	@Override
 	public void update(TUser t) {
-		// TODO Auto-generated method stub
-		
+		userMapper.update(t);
 	}
 
 	@Override
 	public void delete(TUser t) {
-		// TODO Auto-generated method stub
-		
+		userMapper.delete(t);
 	}
 	
 }

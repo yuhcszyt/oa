@@ -16,7 +16,6 @@
 			<result name="login">/WEB-INF/views/manage.jsp</result>
 		</global-results>
 		
-		
 		<action name="mailWrite" class="com.honganwei.action.EmailAction" method="writeEmail">
 			<result name="write">/WEB-INF/views/writeEmail.jsp</result>
 		</action>
@@ -26,7 +25,12 @@
 		</action>
 		
 	</package>
-	
+
+	<package name="UserLogin" namespace="/" extends="struts-default">
+		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
+			<result name="login" >/WEB-INF/views/manage.jsp</result>
+		</action>
+	</package> 
 
 	<package name="email" namespace="/email" extends="struts-default">
 		
@@ -36,6 +40,6 @@
 		
 	</package>
 	
-	<include file="stuts2-tuser.xml"></include>
-
+	<include file="struts2/stuts2-tuser.xml"></include>
+				  
 </struts>
