@@ -1,14 +1,23 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"
+			+ request.getServerName() + ":" + request.getServerPort()
+			+ path + "/";
+%>
+
+<!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<base href="<%=basePath%>">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 </head>
-<body>
-<link href="css/style.css" rel="stylesheet" type="text/css" />
- <div class="nav" id="nav">
+
+
+	<body>
+    <div class="nav" id="nav">
 					<div class="t"></div>
 					<dl>
 							<dt onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">信息管理 
@@ -23,13 +32,13 @@
 							邮件管理
 						</dt>
 						<dd>
-							<a href="email/write.action" target="right">写邮件</a>
+							<a href="mailWrite.action" target="_self">写邮件</a>
 						</dd>
 						<dd>
-							<a href="email/receive.action" target="right">收邮件</a>
+							<a href="mailReceive!receive.action" target="_self">收邮件</a>
 						</dd>
 						<dd>
-							<a href="email/garage.action" target="right">垃圾邮件</a>
+							<a href="mailGarage!garage.action" target="_self">垃圾邮件</a>
 						</dd>
 					</dl>
 					<dl>
@@ -54,5 +63,6 @@
 						
 					</dl>
 				</div>
-</body>
+				<div class="copyright">Copyright &nbsp; &copy; &nbsp; 北大青鸟</div>
+  </body>
 </html>

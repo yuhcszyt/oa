@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+/*布局样式*/.header{height:124px;border-bottom:1px solid #1b5983;background:#509ee1;position:relative;z-index:2;}
+.left{width:218px;position:absolute;top:125px;left:0px;bottom:0px;border-right:1px solid #f2f2f2;background:#fafafa;}
+.left{*height:100%;*top:0;*bottom:0;*border-top:125px solid #fff;*border-bottom:0px solid #fff;*z-index:1;}
+.left .menu{height:100%;}
+.left .menu iframe{height:100%;width:99.99%;}
+.right{position:absolute;top:125px;left:219px;right:0;bottom:0px;}
+.right{*height:100%;*top:0;*bottom:0;*border-top:125px solid #fff;*border-bottom:0px solid #fff;*z-index:1;}
+.right .main{height:100%; padding:10px}
+.right .main iframe{height:100%;width:99.99%;}

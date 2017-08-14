@@ -29,5 +29,11 @@ public class UserServiceImpl implements UserService<TUser>{
 	public void delete(TUser t) {
 		userMapper.delete(t);
 	}
+
+	@Override
+	public void insert(TUser t) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

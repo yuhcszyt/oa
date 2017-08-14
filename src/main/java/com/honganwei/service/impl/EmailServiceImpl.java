@@ -31,6 +31,19 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 	public void delete(TEmail t) {
 		emailMapper.update(t);
 	}
+
+	@Override
+	public void insert(TEmail t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void writeEmail(TEmail t) {
+
+		
+	}
+
 	
 
 
