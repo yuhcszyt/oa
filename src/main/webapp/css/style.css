@@ -26,8 +26,8 @@ input[type="button"]:focus,input[type="submit"]:focus{outline:none;}
 .nav {float: left;width: 200px; height:auto; overflow:hidden;padding-top: 10px;}
 /*菜单 默认状态*/
 .nav dl {line-height: 26px;padding-left: 20px;}
-.nav dl dt {background: url(../images/ico.png) no-repeat 0 -20px;padding-left: 32px;}
-.nav dl dd {background: url(../images/ico.png) no-repeat 18px -48px;padding-left: 36px;display: none;}
+.nav dl dt {background: url(../images/ico.gif) no-repeat 0 -20px;padding-left: 32px;}
+.nav dl dd {background: url(../images/ico.gif) no-repeat 18px -48px;padding-left: 36px;display: none;}
 /*菜单 展开状态*/
 .nav dl.open dt {background-position: 0 2px;}
 .nav dl.open dd {display: block;}
