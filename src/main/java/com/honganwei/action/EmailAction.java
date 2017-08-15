@@ -2,6 +2,9 @@ package com.honganwei.action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.honganwei.po.TEmail;
@@ -26,7 +29,17 @@ public class EmailAction extends BaseAction<TEmail>{
 	public String writeEmail(){
 		
 		List<TUser>list = userService.find();
-		ActionContext.getContext().put("userList",list);
+		HttpServletRequest request = ServletActionContext.getRequest();
+		request.setAttribute("userList",list);
+		//ActionContext.getContext().put("userlist", list);
 		return "write";
 	}
+	
+	
+	public String insertEmail(){
+		
+		return "write";
+	}
+	
+	
 }
