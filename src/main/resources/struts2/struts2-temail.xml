@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+
+	<package name="email" namespace="/emailAction" extends="struts-default">
+		
+		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
+			<result name="write">/WEB-INF/views/email/writeEmail.jsp</result>
+		</action>
+		<action name="insertEmail" class="com.honganwei.action.EmailAction" method="insertEmail">
+			<result name="success">/WEB-INF/views/email/writeEmail.jsp</result>
+		</action>
+		
+	</package>
+				  
+</struts>

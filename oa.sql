@@ -38,7 +38,6 @@ CREATE TABLE `t_email` (
   `isread` INT(11) DEFAULT '0',
   `readtime` DATE DEFAULT NULL,
   `isdelete` INT(11) DEFAULT '0',
-  `userId` INT(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
 ALTER TABLE `oa`.`t_email`     CHANGE `userId` `username` INT(4) NOT NULL;

@@ -11,9 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 	<insert id="insert" parameterType="Temail">
-		INSERT INTO t_email (recipients,sender,title,content,enclosure,sendtime,isread,readtime,isdelete,userId)
+		INSERT INTO t_email (recipients,sender,title,content,enclosure,sendtime,isread,readtime,isdelete)
 		VALUES(#{recipients},#{sender},#{title},#{content},#{enclosure},#{sendTime},#{isRead},#{readtime},
-		#{isdelete},#{UserId}) 
+		#{isdelete}) 
 	</insert>
 	
 	<delete id="delete" parameterType="Temail">

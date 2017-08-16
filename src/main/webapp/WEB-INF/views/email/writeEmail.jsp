@@ -19,6 +19,7 @@
 <script type="text/javascript">
 
 	function checkmailWrite() {
+		 console.info("checkmailWrite()");
 		var checkarr = [ check_mailTitle(), check_File() ];
 		for(var i=0; i<checkarr.length; i++){
 			if(checkarr[i]==false){
@@ -34,7 +35,7 @@ function check_File(){
 		if($isFileOk!=1){
 			if($isFileOk==-1){
 				$("#upload_text").html("<font color=red>✕不能为空</font>");
-				 console.info("#upload_tex");
+				 console.info("check_File()#upload_tex");
 			}
 			return false;
 		}
@@ -44,8 +45,10 @@ function check_mailTitle(){
 	 var $title_text=$("#title").val();
 	 if($title_text==""||$title_text==undefined){
 		 $("#title_text").html("<font color=red>✕不能为空</font>");
-		 console.info("<font color=red>✕不能为空</font>");
+		 console.info("check_mailTitle<font color=red>✕不能为空</font>");
 		 return false;
+	 }else{
+		 $("#title_text").html("<font color=green>√</font>");
 	 }
 }
 	
@@ -60,28 +63,17 @@ $(function(){
 				maxSize : 9216,
 				success : function() {
 					$("#upload_text").html("<font color=green>√</font>");
-					$("writeEmail").val("1");
+					$("#isFileOk").val("1");
 				},
 				extensionerror : function() {
 					$("#upload_text").html("<font color=red>✕ 附件允许的格式为：jpeg、gif、png、rar、zip、7z、pdf、doc、xls、ppt、docx、xlsx、pptx</font>");
-					$("writeEmail").val("0");
+					$("#isFileOk").val("0");
 				},
 				sizeerror : function() {
 					$("#upload_text").html("<font color=red>✕ (上传文件不能大于9M)</font>");
-					$("writeEmail").val("0");
+					$("#isFileOk").val("0");
 				}
 			});
-	
-	$.ajax({
-		   type: "POST",
-		   url: "some.php",
-		   data: "name=John&location=Boston",
-		   dataType:"json",
-		   success: function(msg){
-		     alert( "Data Saved: " + msg );
-		   }
-		});
-	
 });
 </script>
 <body>
@@ -91,13 +83,14 @@ $(function(){
 		</div>
 		<div class="pages">
 		<input type="hidden" value="-1" id="isFileOk">
-		<form action="" method="post" onsubmit="checkmailWrite()">
-			<table width="100%" border="0" cellspacing="0" cellpadding="0"
-				class="formTable">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formTable">
+		<form action="${pageContext.request.contextPath}/emailAction/insertEmail.action" method="post"  
+		enctype="multipart/form-data" onsubmit="return checkmailWrite()">
 				<tr>
 					<td align="right" width="30%">收件人：</td>
-					<td align="left" width="70%"><select>
-					<option>--请选择--</option>
+					<td align="left" width="70%">
+					<select name="recipients">
+					<option value="">--请选择--</option>
 						<c:forEach items="${userList}" var="user">
 								<option value="${user.username}">${user.username}&nbsp;&nbsp;${user.nickname}</option>
 						</c:forEach>
@@ -109,11 +102,11 @@ $(function(){
 				</tr> 
 				<tr>
 					<td align="right">邮件内容：</td>
-					<td align="left"><textarea rows="20" cols="40"></textarea></td>
+					<td align="left"><textarea rows="20" cols="40" name="content"></textarea></td>
 				</tr>
 				<tr>
 					<td align="right">上传附件：</td>
-					<td align="left"><input type="file" id="upload"/> <span id="upload_text"><font color=red>*</font>上传附件不能大于9M</span></td>
+					<td align="left"><input type="file" id="upload" name="uploadFile"/> <span id="upload_text"><font color=red>*</font>上传附件不能大于9M</span></td>
 				</tr>
 			</table>
 				<div align="center">

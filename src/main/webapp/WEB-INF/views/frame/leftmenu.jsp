@@ -32,7 +32,7 @@
 							邮件管理
 						</dt>
 						<dd>
-							<a href="${pageContext.request.contextPath}/email/write.action" target="main">写邮件</a>
+							<a href="${pageContext.request.contextPath}/emailAction/write.action" target="main">写邮件</a>
 						</dd>
 						<dd>
 							<a href="mailReceive!receive.action" target="_self">收邮件</a>

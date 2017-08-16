@@ -32,14 +32,7 @@
 		</action>
 	</package> 
 
-	<package name="email" namespace="/email" extends="struts-default">
-		
-		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
-			<result name="write">/WEB-INF/views/email/writeEmail.jsp</result>
-		</action>
-		
-	</package>
 	
 	<include file="struts2/stuts2-tuser.xml"></include>
-				  
+	<include file="struts2/struts2-temail.xml"></include>			  
 </struts>
