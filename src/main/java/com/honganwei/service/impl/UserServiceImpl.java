@@ -24,7 +24,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 
-	@Override
+	/**
+	 * 查询所有的用户
+	 */
 	public List<TUser> find() {
 		return userMapper.findAll();
 	}
