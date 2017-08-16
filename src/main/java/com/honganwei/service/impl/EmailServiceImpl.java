@@ -68,7 +68,6 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		email.setIsdelete(0);
 		email.setReadtime(null);
 		emailMapper.insert(email);
-		
 	}
 	
 	
