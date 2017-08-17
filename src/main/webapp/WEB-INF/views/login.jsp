@@ -59,9 +59,7 @@ function login(){
 			<input type="password" name="password" id="checkPassWord"  class="easyui-validatebox" required="true" /> 
 			<span id="passWord_text"></span>
 			<br />
-			<!-- <input type="submit" name="submit" class="login-sub" value="" /> --> 
-			<input type="button" onclick="login()">
-			<br />
+			<input type="submit" name="submit" class="login-sub" value="" /> <br />
 		<b><font color="red"><s:actionerror/></font></b>
 		</s:form>
 	</div>
