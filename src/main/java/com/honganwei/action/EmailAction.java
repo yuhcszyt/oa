@@ -2,6 +2,10 @@ package com.honganwei.action;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +21,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 public class EmailAction extends BaseAction<TEmail>{
 	
-    private File uploadFile; //得到上传的文件
+    private File  uploadFile; //得到上传的文件
     private String uploadFileContentType; //得到文件的类型
     private String uploadFileFileName; //得到文件的名称
     
@@ -48,7 +52,6 @@ public class EmailAction extends BaseAction<TEmail>{
 	 * @return
 	 * @throws IOException 
 	 */
-		
 	public String insertEmail() throws IOException{
 		
 		 
@@ -68,7 +71,68 @@ public class EmailAction extends BaseAction<TEmail>{
 		
         return "success";
 	}
-
+	
+	
+	
+	/**
+	 * 进入邮件信息页面
+	 * @return
+	 */
+	public String emailInfo(){
+		
+		List<TEmail>emailList=emailService.find();
+		
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		request.setAttribute("emailList", emailList);
+		
+		return"emailInfo";
+	}
+	
+	
+	
+	
+	/**
+	 * 进去邮件详情页面
+	 * @return
+	 * @throws ParseException 
+	 */
+	public String emailInfoDetail() throws ParseException{
+		
+		TEmail email=emailService.findEmailById(model.getId());
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		//当前阅读时间
+		email.setReadtime(sdf.parse(sdf.format(new Date())));
+		
+		HttpServletRequest request =ServletActionContext.getRequest();
+		request.setAttribute("email", email);
+		
+		return "emailInfoDetail";
+	}
+	
+	
+	
+	/**
+	 * 下载附件
+	 * @return
+	 */
+	public InputStream  getDownloadFile(){
+		
+		TEmail email=emailService.findEmailById(model.getId());
+		
+		String path=email.getEnclosure();
+		//获取文件扩展名
+		int contentIndex=path.lastIndexOf(".");
+		String contentType=path.substring(contentIndex);
+		
+		//获取文件名
+		int fileIndex=path.lastIndexOf(System.getProperty("file.separator"));
+		String FileName=path.substring(fileIndex+1,contentIndex);
+		
+		return ServletActionContext.getServletContext().getResourceAsStream("upload/"+FileName+contentType) ; 
+	//	Can not find a java.io.InputStream with the name [downloadFile] in the invocation stack. Check the <param name="inputName"> tag specified for this action.
+	}
+	
 	
 	public File getUploadFile() {
 		return uploadFile;

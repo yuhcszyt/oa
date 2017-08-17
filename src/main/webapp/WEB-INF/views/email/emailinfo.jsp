@@ -22,7 +22,7 @@
 <body>
 <div class="action">
 		<div class="t">
-			<b id="pageTitle">写邮件</b>
+			<b id="pageTitle">收邮件</b>
 		</div>
 		<div class="pages">
 		<input type="hidden" value="-1" id="isFileOk">
@@ -30,21 +30,21 @@
 		<form action="${pageContext.request.contextPath}/emailAction/insertEmail.action" method="post"  
 		enctype="multipart/form-data" onsubmit="return checkmailWrite()">
 				<tr>
-					<td align="left" width="30%">邮件标题：</td>
+					<td align="left" width="30%">邮件标题</a></td>
 					<td align="left" width="30%">内容</td>
 					<td align="left" width="30%">是否已读</td>
-					<td align="left" width="30%">时间</td>
+					<td align="left" width="30%">发送时间</td>
 					<td align="left" width="30%">操作</td>
 				</tr>
 				<c:if test="${emailList!=null}">
 				<c:forEach items="${emailList}" var="email" varStatus="i">
-					<tr <c:if test="${status.count%2==0}">bgcolor="#CCCCFE"</c:if>>
-					<td align="left" width="30%">${email.title}</td>
+					<tr <c:if test="${i.count%2!=0}">bgcolor="#CCCCFE"</c:if>>
+					<td align="left" width="30%"><a href="${pageContext.request.contextPath}/emailAction/emailInfoDetail.action?model.id=${email.id}">${email.title}</a></td>
 					<td align="left" width="30%">${email.content}</td>
-					<td align="left" width="30%">${email.isread==0 ? '未读' : '已读' }</td>
-					<td align="left" width="30%"><fmt:formatDate value="${m.sendtime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					<td align="left" width="30%">${email.isRead==0 ? '未读' : '已读' }</td>
+					<td align="left" width="30%"><fmt:formatDate value="${email.sendTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 					<td align="left" width="30%"><a href="#?id=${email.id}">删除</a></td>
-					</tr>
+				</tr>
 				</c:forEach>
 				</c:if>
 			</table>

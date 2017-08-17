@@ -35,7 +35,7 @@ public class TEmail {
 	
 	private Integer isRead;
 	
-	private Date readtime;
+	private Date  readtime;
 	
 	private Integer isdelete;
 	

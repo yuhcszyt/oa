@@ -19,4 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<delete id="delete" parameterType="Temail">
 	delete form email t where t.userId=#{userId} and t.id=#{id} 
 	</delete>
+	
+	<select id="selectById" parameterType="int" resultType="Temail">
+		SELECT * FROM t_email  t WHERE t.id=#{id};
+	</select>
+	
 </mapper>

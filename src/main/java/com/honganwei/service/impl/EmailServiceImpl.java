@@ -23,7 +23,9 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 	@Autowired
 	private EmailMapper emailMapper;
 
-	@Override
+	/**
+	 * 查询全部的email信息
+	 */
 	public List<TEmail> find() {
 		
 		return emailMapper.findAll();
@@ -56,7 +58,6 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		email.setSender(t.getSender());
 		email.setTitle(t.getTitle());
 		email.setContent(t.getContent());
-		email.setContent(t.getEnclosure());
 		email.setEnclosure(t.getEnclosure());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		try {
@@ -92,8 +93,18 @@ public class EmailServiceImpl implements EmailService<TEmail>{
             return null;
         }
         TEmail email=new TEmail();
-        email.setEnclosure(file+uploadFileFileName);
+        email.setEnclosure(file+System.getProperty("file.separator")+uploadFileFileName);
 		return email;
+	}
+
+	
+	
+	public TEmail findEmailById(int id){
+		
+		TEmail email = emailMapper.selectById(id);
+		
+		return email;
+		
 	}
 
 

@@ -6,6 +6,7 @@ import com.honganwei.mapper.base.mapper.BaseMapper;
 import com.honganwei.po.TEmail;
 
 public interface EmailMapper extends BaseMapper<TEmail>{
-
 	
+	public TEmail selectById(int id);
+
 }

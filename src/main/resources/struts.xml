@@ -11,11 +11,6 @@
 	 -->
 	<package name="common" namespace="/" extends="struts-default">
 	
-		
-		<action name="mailWrite" class="com.honganwei.action.EmailAction" method="writeEmail">
-			<result name="write">/WEB-INF/views/writeEmail.jsp</result>
-		</action>
-		
 		<action  name="uiAction_*_*">
 			<result>/WEB-INF/views/{1}/{2}.jsp</result>
 		</action>

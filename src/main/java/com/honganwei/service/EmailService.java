@@ -10,4 +10,7 @@ public interface EmailService<T> extends BaseService<T>{
 	public void writeEmail(T t);
 	
 	public TEmail upload(File uploadFile,String uploadFileFileName,String uploadFileContentType);
+	
+	public TEmail findEmailById(int id);
+	
 }
