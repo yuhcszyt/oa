@@ -10,4 +10,5 @@ public interface BaseService<T>{
 	
 	public void delete(T t);
 	
+	public void insert(T t);
 }

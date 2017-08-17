@@ -6,7 +6,7 @@ import java.util.Date;
 public class TUser implements java.io.Serializable {
 
 
-	private Integer username;
+	private String username;
 	private String password;
 	private String nickname;
 	private Date birthday;
@@ -17,17 +17,15 @@ public class TUser implements java.io.Serializable {
 	private Date regtime;
 	private String regip;
 	
-
-	
 	public TUser() {
 	}
 	
-	public TUser(Integer username, String password) {
+	public TUser(String username, String password) {
 		this.username = username;
 		this.password = password;
 	}
 	
-	public TUser(Integer username, String password, String nickname, Date birthday, Integer sex, String mobile,
+	public TUser(String username, String password, String nickname, Date birthday, Integer sex, String mobile,
 			String address, Integer rank, Date regtime, String regip) {
 		this.username = username;
 		this.password = password;
@@ -40,18 +38,16 @@ public class TUser implements java.io.Serializable {
 		this.regtime = regtime;
 		this.regip = regip;
 	}
-
-	
 	
 	public String toString() {
 		return "TUser [username=" + username + ", password=" + password + ", nickname=" + nickname + ", birthday="
 				+ birthday + ", sex=" + sex + ", mobile=" + mobile + ", address=" + address + ", rank=" + rank
 				+ ", regtime=" + regtime + ", regip=" + regip + "]";
 	}
-	public Integer getUsername() {
+	public String getUsername() {
 		return username;
 	}
-	public void setUsername(Integer username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 	public String getPassword() {

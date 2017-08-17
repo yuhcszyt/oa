@@ -11,4 +11,6 @@ public interface BaseMapper<T> {
 	public void delete(T t);
 	
 	public void update(T t);
+	
+	
 }

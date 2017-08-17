@@ -11,15 +11,6 @@
 	 -->
 	<package name="common" namespace="/" extends="struts-default">
 	
-	<!-- 全局结果集定义 -->
-		 <global-results>
-			<result name="login">/WEB-INF/views/manage.jsp</result>
-		</global-results>
-		
-		<action name="mailWrite" class="com.honganwei.action.EmailAction" method="writeEmail">
-			<result name="write">/WEB-INF/views/writeEmail.jsp</result>
-		</action>
-		
 		<action  name="uiAction_*_*">
 			<result>/WEB-INF/views/{1}/{2}.jsp</result>
 		</action>
@@ -27,19 +18,18 @@
 	</package>
 
 	<package name="UserLogin" namespace="/" extends="struts-default">
-		<action name="LoginAction_*" class="com.honganwei.action.LoginAction" method="{1}">
+
+		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
 			<result name="login" >/WEB-INF/views/login.jsp</result>
+			<result name="home" >/WEB-INF/views/index.jsp</result>
+
 		</action>
 	</package> 
 
-	<package name="email" namespace="/email" extends="struts-default">
-		
-		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
-			<result name="write">/WEB-INF/views/email/writeEmail.jsp</result>
-		</action>
-		
-	</package>
 	
-<!-- 	<include file="struts2/stuts2-tuser.xml"></include> -->
-				  
+
+	<include file="struts2/stuts2-tuser.xml"></include>
+	<include file="struts2/struts2-temail.xml"></include>			  
+
+
 </struts>

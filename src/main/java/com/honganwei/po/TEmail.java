@@ -35,12 +35,10 @@ public class TEmail {
 	
 	private Integer isRead;
 	
-	private Date readtime;
+	private Date  readtime;
 	
 	private Integer isdelete;
 	
-	private String UserId;
-
 	public Integer getId() {
 		return id;
 	}
@@ -122,16 +120,4 @@ public class TEmail {
 	public void setIsdelete(Integer isdelete) {
 		this.isdelete = isdelete;
 	}
-
-	public String getUserId() {
-		return UserId;
-	}
-
-	public void setUserId(String userId) {
-		UserId = userId;
-	}
-	
-	
-	
-	
 }
