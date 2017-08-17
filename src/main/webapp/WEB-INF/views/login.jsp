@@ -26,7 +26,6 @@
 	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
 	type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/member.css" />
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/member.js"></script>
 </head>
 <script type="text/javascript">
 
@@ -34,11 +33,14 @@ function login(){
 	
 	$.ajax({
 		type:'post',
-		dataType:'json',		
 		date:$('input').serialize(),
+		url:'${pageContext.request.contextPath}/LoginAction_login.action',
         success:function(data){
-			
-			
+			if(data='false'||data==false){
+				$("#login_text").html('<font color="red">登录错误</font>');
+			}else{
+				document.location.href="${pageContext.request.contextPath}/LoginAction_home.action";
+			}
 		}
 	});
 }
@@ -50,7 +52,7 @@ function login(){
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-		<s:form action="LoginAction_login.action" namespace="/" id="loginfrom" onsubmit="return checksubmit();">
+		<form  id="loginfrom" onsubmit="return checksubmit();">
 			<label> 工&nbsp;&nbsp;号： </label> 
 			<input type="text" name="username" value="" id="checkUserName"  class="easyui-numberbox" required="true"/>
 			<span id="userName_text"></span>
@@ -59,9 +61,9 @@ function login(){
 			<input type="password" name="password" id="checkPassWord"  class="easyui-validatebox" required="true" /> 
 			<span id="passWord_text"></span>
 			<br />
-			<input type="submit" name="submit" class="login-sub" value="" /> <br />
-		<b><font color="red"><s:actionerror/></font></b>
-		</s:form>
+			<input type="button" name="submit" class="login-sub" value="" onclick="login()"/><span id="login_text"></span><br/>
+		<b><font color="red"></font></b>
+		</form>
 	</div>
 	<div class="login-copyright"></div>
 </body>

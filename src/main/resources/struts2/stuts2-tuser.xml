@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<!-- <package name="UserLogin" namespace="/" extends="struts-default">
+		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
+			<result name="login" >/WEB-INF/views/manage.jsp</result>
+		</action>
+	</package> -->
+
+
+	<package name="UserLogin" namespace="/" extends="struts-default">
+		<action name="LoginAction_*" class="com.honganwei.action.LoginAction" method="{1}">
+			<result name="login" >/WEB-INF/views/login.jsp</result>
+			<result>/WEB-INF/views/index.jsp</result>
+			<!-- <result type="json">
+				<param name="root">result</param>
+			</result> -->
+		</action>
+	</package> 
+
+</struts>
