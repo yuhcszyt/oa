@@ -27,8 +27,8 @@
 	</package>
 
 	<package name="UserLogin" namespace="/" extends="struts-default">
-		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
-			<result name="login" >/WEB-INF/views/manage.jsp</result>
+		<action name="LoginAction_*" class="com.honganwei.action.LoginAction" method="{1}">
+			<result name="login" >/WEB-INF/views/login.jsp</result>
 		</action>
 	</package> 
 
@@ -40,6 +40,6 @@
 		
 	</package>
 	
-	<include file="struts2/stuts2-tuser.xml"></include>
+<!-- 	<include file="struts2/stuts2-tuser.xml"></include> -->
 				  
 </struts>

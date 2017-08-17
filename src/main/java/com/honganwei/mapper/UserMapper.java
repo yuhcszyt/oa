@@ -1,8 +1,12 @@
 package com.honganwei.mapper;
 
+import java.util.List;
+
 import com.honganwei.mapper.base.mapper.BaseMapper;
 import com.honganwei.po.TUser;
 
 public interface UserMapper extends BaseMapper<TUser>{
 
+
+	public List<TUser> findUserByName(TUser user);
 }

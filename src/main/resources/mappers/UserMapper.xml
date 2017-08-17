@@ -5,14 +5,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.honganwei.mapper.UserMapper">
 
-	
-	
 
 
-
-	<select id="findAll"  resultType="Tuser">
+	<select id="findAll" resultType="Tuser">
 
 		Select * from t_user
 	</select>
-
+	<select id="findUserByName" resultType="TUser" parameterType="TUser" >
+	
+		SELECT * FROM t_user t WHERE t.username=#{username}
+	</select>
+		
+	
 </mapper>

@@ -15,6 +15,7 @@ public class UserServiceImpl implements UserService<TUser>{
 	@Autowired
 	private UserMapper userMapper;
 
+	
 	@Override
 	public List<TUser> find() {
 		return userMapper.findAll();
@@ -29,5 +30,32 @@ public class UserServiceImpl implements UserService<TUser>{
 	public void delete(TUser t) {
 		userMapper.delete(t);
 	}
+
+	@Override
+	public boolean login(TUser user) {
+		
+		List<TUser> tuser=userMapper.findUserByName(user);
+		TUser getUser=null;
+		
+		if(tuser!=null&&tuser.size()>0){
+			getUser=tuser.get(0);
+		}
+		if(getUser!=null){
+			
+			if(tuser!=null && user.getPassword().equals(getUser.getPassword()) ){
+				return true;
+			}
+			
+			
+		}
 	
-}
+		
+		return false;
+	}
+
+
+
+
+	}
+	
+

@@ -94,30 +94,34 @@
 	}
 </style>
 </head>
- 
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-
-		<form action="${pageContext.request.contextPath}/userAction_login.action" method="post">
+	
+	<s:form namespace="/" action="LoginAction_login" >
+		
 			<label>
 				工&nbsp;&nbsp;号：
 			</label>
-			<input type="text" name="u.username" />
+			<s:textfield name="username"></s:textfield>
+			
 			<label>
 				密&nbsp;&nbsp;码：
 			</label>
 
-			<input type="password" name="u.password" />
 			
-			<a onclick="document.getElementById('loginform').submit();" href="#" id="loginform:j_id19" name="loginform:j_id19">
+			<s:password name="password"></s:password>
+			<s:submit value="登录" cssClass="btn"></s:submit>
+			
+			<%-- <a onclick="document.getElementById('loginform').submit();" href="#" id="loginform:j_id19" name="loginform:j_id19">
 						<span
 							id="loginform:loginBtn" class="login-sub"
 							style="margin-top:-36px;">登录</span>
-						</a>
+						</a> --%>
 			<br/>
 				<b><font color="red"></font></b>
-		</form>
+				<s:fielderror></s:fielderror>
+		</s:form>
 	</div>
 	<div class="login-copyright"></div>
 </body>
