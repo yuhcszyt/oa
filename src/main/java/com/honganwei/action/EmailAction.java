@@ -22,11 +22,11 @@ public class EmailAction extends BaseAction<TEmail>{
 		this.userService = userService;
 	}
 */
-	
+/*	
 	public String writeEmail(){
 		
-		List<TUser>list = userService.find();
-		ActionContext.getContext().put("userList",list);
+	/*	List<TUser>list = userService.find();
+		ActionContext.getContext().put("userList",list);*/
 		return "write";
 	}
 }
