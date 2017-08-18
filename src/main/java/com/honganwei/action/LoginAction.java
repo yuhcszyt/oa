@@ -15,10 +15,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.honganwei.po.TUser;
 import com.honganwei.service.UserService;
-<<<<<<< HEAD
-=======
+
 import com.honganwei.service.base.BaseService;
->>>>>>> branch 'master' of https://github.com/yuhcszyt/oa
+
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -46,22 +45,22 @@ public  class LoginAction extends BaseAction<TUser>{
 
 	public String login(){
 		
-	Boolean	result=userService.login(tuser);
-		if(result==false){
-			this.addFieldError("", "ÓÃ»§ÃÜÂë´íÎó£¡");
+	TUser	result=userService.login(tuser);
+		if(result==null){
+			this.addFieldError("", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return "login";
 		}
 		
 		TUser user =userService.login(model);
 		
 		if(user != null){
-			//µÇÂ¼³É¹¦,½«user¶ÔÏó·ÅÈësession£¬Ìø×ªµ½Ê×Ò³
+			//ï¿½ï¿½Â¼ï¿½É¹ï¿½,ï¿½ï¿½userï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sessionï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Ò³
 			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
 			return HOME;
 		}else{
-			//µÇÂ¼Ê§°Ü£¬,ÉèÖÃÌáÊ¾ĞÅÏ¢£¬Ìø×ªµ½µÇÂ¼Ò³Ãæ
-			//ÊäÈëµÄÑéÖ¤Âë´íÎó,ÉèÖÃÌáÊ¾ĞÅÏ¢£¬Ìø×ªµ½µÇÂ¼Ò³Ãæ
-			this.addActionError("ÓÃ»§Ãû»òÕßÃÜÂëÊäÈë´íÎó£¡");
+			//ï¿½ï¿½Â¼Ê§ï¿½Ü£ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Â¼Ò³ï¿½ï¿½
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½Â¼Ò³ï¿½ï¿½
+			this.addActionError("ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 			return LOGIN;
 		}
 	}
