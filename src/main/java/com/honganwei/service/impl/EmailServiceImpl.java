@@ -112,14 +112,18 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 	}
 
 	@Override
-	public PageBean<TEmail> findEmailByPage(TEmail email, Map map) {
-		PageBean page=null;
-		if(map==null){
-			map =new HashMap<String,Object>();
-			int totalRecord=emailMapper.findCount(email.getRecipients());
-			 page=new PageBean<TEmail>(0, 6, totalRecord);
-			map.put("page",page);
+	public PageBean<TEmail> findEmailByPage(TEmail email,int pageNum) {
+		
+		int totalRecord=emailMapper.findCount(email.getRecipients());
+		
+		if(pageNum==0){
+			pageNum=1;
 		}
+		
+		Map map =new HashMap<String,Object>();
+		PageBean page=new PageBean<TEmail>(pageNum, 6, totalRecord);
+		map.put("page",page);
+	
 		map.put("email",email);
 		
 		List<TEmail> list =emailMapper.selectByPage(map);

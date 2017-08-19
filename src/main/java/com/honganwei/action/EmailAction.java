@@ -37,6 +37,10 @@ public class EmailAction extends BaseAction<TEmail>{
 	@Autowired
 	private EmailService<TEmail>emailService;
 	
+	//接受当前页页数
+	private int pageNum;
+	
+
 	/**
 	 * 进入写邮件页面
 	 * @return
@@ -81,11 +85,12 @@ public class EmailAction extends BaseAction<TEmail>{
 	 */
 	public String emailInfo(){
 		
+		
 		//由于小彭没把用户放在session暂且先这样写
 		model.setRecipients("546345");
 		
 		//List<TEmail>emailList=emailService.find();
-		PageBean<TEmail> page=emailService.findEmailByPage(model,null);
+		PageBean<TEmail> page=emailService.findEmailByPage(model,pageNum);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
 		request.setAttribute("page",page);
@@ -193,6 +198,14 @@ public class EmailAction extends BaseAction<TEmail>{
 	public void setContent(String content) {
 		this.content = content;
 	}
-	
+	public int getPageNum() {
+
+		return pageNum;
+	}
+
+	public void setPageNum(int pageNum) {
+		
+		this.pageNum = pageNum;
+	}
 	
 }

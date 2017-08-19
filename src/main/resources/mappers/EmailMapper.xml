@@ -13,7 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				</if>
 			</if>
 			 <if test="page!=null">
-			 	 limit #{page.pageNum},#{page.pageSize}
+			 	 limit #{page.startIndex},#{page.pageSize}
 			</if>
 		</where>
 	</sql>

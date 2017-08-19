@@ -27,8 +27,8 @@
 		<div class="pages">
 		<input type="hidden" value="-1" id="isFileOk">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="formTable">
-		<form action="${pageContext.request.contextPath}/emailAction/insertEmail.action" method="post"  
-		enctype="multipart/form-data" onsubmit="return checkmailWrite()">
+		<form>
+		<%-- <input type="hidden" name="pageNum"  value="${page.pageNum}"/> --%>
 				<tr>
 					<td align="left" width="30%">邮件标题</a></td>
 					<td align="left" width="30%">内容</td>
@@ -47,8 +47,69 @@
 				</tr>
 				</c:forEach>
 				</c:if>
+				<tr>
+					<td align="right" colspan="5">
+						<span>第${page.pageNum}/${page.totalPage}页</span>
+						<c:if test="${page.pageNum gt 1}">
+							<a href="javascript:void(0)" onclick="showPage(1)">[首页]</a>&nbsp;&nbsp;
+							<a href="javascript:void(0)" onclick="showPage(${page.pageNum-1})">[上一页]</a>&nbsp;&nbsp;
+						</c:if>
+						<c:forEach begin="${page.start}" end="${page.end}" var="num">
+							<c:if test="${num!=page.start} or ${page.end!=num} ">
+						    	<a href="javascript:void(0)" onclick="showPage(${num})">${num}</a>&nbsp;&nbsp;
+							</c:if>
+						</c:forEach>
+						<c:if test="${page.pageNum lt page.totalPage}">
+							<a href="javascript:void(0)" onclick="showPage(${page.pageNum+1})">[下一页]</a>&nbsp;&nbsp;
+							<a href="javascript:void(0)" onclick="showPage(${page.totalPage})">[尾页]</a>&nbsp;&nbsp;
+						</c:if>
+					</td>
+				</tr>
+			</form>		
 			</table>
+			<%-- <table border="0" cellspacing="0" cellpadding="0" align="center">
+				
+			</table> --%>
 	</div>
 	</div>
 </body>
+<script type="text/javascript">
+		function showPage(num){
+			
+			window.location.href="${pageContext.request.contextPath}/emailAction/emailInfo.action?pageNum="+num;
+			
+		}
+	</script>
 </html>
+
+<!--以下代码是 分页参考 -->
+ <%--  <td align="right">
+    	<span>第<s:property value="#pageBean.pageNum" />/<s:property value="#pageBean.totalPage" />页</span>
+        <span>
+        	<s:if test="#pageBean.pageNum gt 1">
+            	<a href="javascript:void(0)" onclick="showPage(1)">[首页]</a>&nbsp;&nbsp;
+            	<a href="javascript:void(0)" onclick="showPage(<s:property value="#pageBean.pageNum - 1" />)">[上一页]</a>&nbsp;&nbsp;
+        	</s:if>
+        	
+        	动态显示条
+        	<s:iterator begin="#pageBean.start" end="#pageBean.end" var="num">
+           		<a href="javascript:void(0)" onclick="showPage(<s:property value="#num" />)"><s:property value="#num" /></a>&nbsp;&nbsp;
+        	</s:iterator>
+        	
+        	<s:if test="#pageBean.pageNum lt #pageBean.totalPage">
+           		<a href="javascript:void(0)" onclick="showPage(<s:property value="#pageBean.pageNum + 1" />)">[下一页]</a>&nbsp;&nbsp;
+            	<a href="javascript:void(0)" onclick="showPage(<s:property value="#pageBean.totalPage" />)">[尾页]</a>&nbsp;&nbsp;
+            </s:if>
+        </span>
+    </td>
+  </tr>
+</table>
+	<script type="text/javascript">
+		function showPage(num){
+			//1 修改隐藏域的值
+			document.getElementById("pageNum").value = num;
+			//2 提交表单
+			document.forms[0].submit();
+		}
+	</script>
+ --%>

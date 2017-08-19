@@ -20,9 +20,9 @@ public interface EmailService<T> extends BaseService<T>{
 	/**
 	 * 分页查询.
 	 * @param email
-	 * @param map
+	 * @param pageNum 当前页
 	 * @return
 	 */
-	public PageBean<TEmail> findEmailByPage(TEmail email,Map map);
+	PageBean<TEmail> findEmailByPage(TEmail email, int pageNum);
 	
 }
