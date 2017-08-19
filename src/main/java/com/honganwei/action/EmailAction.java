@@ -19,6 +19,8 @@ import com.honganwei.service.EmailService;
 import com.honganwei.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 
+import util.PageBean;
+
 public class EmailAction extends BaseAction<TEmail>{
 	
     private File  uploadFile; //得到上传的文件
@@ -53,7 +55,6 @@ public class EmailAction extends BaseAction<TEmail>{
 	 * @throws IOException 
 	 */
 	public String insertEmail() throws IOException{
-		
 		 
 		TEmail email=emailService.upload(uploadFile, uploadFileFileName, uploadFileContentType);
         
@@ -80,13 +81,16 @@ public class EmailAction extends BaseAction<TEmail>{
 	 */
 	public String emailInfo(){
 		
-		List<TEmail>emailList=emailService.find();
+		//由于小彭没把用户放在session暂且先这样写
+		model.setRecipients("546345");
 		
+		//List<TEmail>emailList=emailService.find();
+		PageBean<TEmail> page=emailService.findEmailByPage(model,null);
 		HttpServletRequest request = ServletActionContext.getRequest();
 		
-		request.setAttribute("emailList", emailList);
+		request.setAttribute("page",page);
 		
-		return"emailInfo";
+		return "emailInfo";
 	}
 	
 	
@@ -109,7 +113,6 @@ public class EmailAction extends BaseAction<TEmail>{
 		
 		return "emailInfoDetail";
 	}
-	
 	
 	
 	/**

@@ -6,7 +6,9 @@ import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Service;
 import com.honganwei.mapper.EmailMapper;
 import com.honganwei.po.TEmail;
 import com.honganwei.service.EmailService;
+
+import util.PageBean;
 
 @Service
 public class EmailServiceImpl implements EmailService<TEmail>{
@@ -105,6 +109,23 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		
 		return email;
 		
+	}
+
+	@Override
+	public PageBean<TEmail> findEmailByPage(TEmail email, Map map) {
+		PageBean page=null;
+		if(map==null){
+			map =new HashMap<String,Object>();
+			int totalRecord=emailMapper.findCount(email.getRecipients());
+			 page=new PageBean<TEmail>(0, 6, totalRecord);
+			map.put("page",page);
+		}
+		map.put("email",email);
+		
+		List<TEmail> list =emailMapper.selectByPage(map);
+		page.setData(list);
+		
+		return page;
 	}
 
 

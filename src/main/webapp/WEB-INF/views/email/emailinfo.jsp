@@ -36,8 +36,8 @@
 					<td align="left" width="30%">发送时间</td>
 					<td align="left" width="30%">操作</td>
 				</tr>
-				<c:if test="${emailList!=null}">
-				<c:forEach items="${emailList}" var="email" varStatus="i">
+				<c:if test="${page!=null}">
+				<c:forEach items="${page.data}" var="email" varStatus="i">
 					<tr <c:if test="${i.count%2!=0}">bgcolor="#CCCCFE"</c:if>>
 					<td align="left" width="30%"><a href="${pageContext.request.contextPath}/emailAction/emailInfoDetail.action?model.id=${email.id}">${email.title}</a></td>
 					<td align="left" width="30%">${email.content}</td>

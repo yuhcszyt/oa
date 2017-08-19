@@ -3,11 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.honganwei.mapper.EmailMapper">
 	
+<mapper namespace="com.honganwei.mapper.EmailMapper">
+	<sql id="where_queryTEmail">
+		<where>
+			<if test="email!=null">
+				<if test="email.recipients!=null and email.recipients!=''">
+				  and t.recipients=#{email.recipients}
+				</if>
+			</if>
+			 <if test="page!=null">
+			 	 limit #{page.pageNum},#{page.pageSize}
+			</if>
+		</where>
+	</sql>
 	
 	<select id="findAll"  resultType="Temail">
-		Select * from t_email
+		Select * from t_emailc
 	</select>
 	
 	<insert id="insert" parameterType="Temail">
@@ -24,4 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT * FROM t_email  t WHERE t.id=#{id};
 	</select>
 	
+	<select id="selectByPage" parameterType="java.util.Map" resultType="Temail">
+		SELECT * FROM t_email  t
+		<include refid="where_queryTEmail"></include>
+	</select>
+	
+	<select id="findCount" parameterType="java.lang.String" resultType="int">
+		SELECT count(*) FROM t_email  t where t.recipients=#{str};
+	</select>
 </mapper>

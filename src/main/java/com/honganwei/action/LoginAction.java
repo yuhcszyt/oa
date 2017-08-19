@@ -29,14 +29,6 @@ import com.opensymphony.xwork2.ModelDriven;
 
 public  class LoginAction extends BaseAction<TUser>{
 
-	private TUser tuser=new TUser();
-	@Override
-	public TUser getModel() {
-		// TODO Auto-generated method stub
-		return tuser;
-	}
-	
-
 
 	@Autowired
 	private UserService userService;
@@ -45,11 +37,6 @@ public  class LoginAction extends BaseAction<TUser>{
 
 	public String login(){
 		
-	TUser	result=userService.login(tuser);
-		if(result==null){
-			this.addFieldError("", "�û��������");
-			return "login";
-		}
 		
 		TUser user =userService.login(model);
 		

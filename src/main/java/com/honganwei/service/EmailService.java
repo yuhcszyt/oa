@@ -1,9 +1,13 @@
 package com.honganwei.service;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 
 import com.honganwei.po.TEmail;
 import com.honganwei.service.base.BaseService;
+
+import util.PageBean;
 
 public interface EmailService<T> extends BaseService<T>{
 
@@ -12,5 +16,13 @@ public interface EmailService<T> extends BaseService<T>{
 	public TEmail upload(File uploadFile,String uploadFileFileName,String uploadFileContentType);
 	
 	public TEmail findEmailById(int id);
+	
+	/**
+	 * 分页查询.
+	 * @param email
+	 * @param map
+	 * @return
+	 */
+	public PageBean<TEmail> findEmailByPage(TEmail email,Map map);
 	
 }
