@@ -24,7 +24,7 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 	private EmailMapper emailMapper;
 
 	/**
-	 * 查询全部的email信息
+	 * 鏌ヨ鍏ㄩ儴鐨別mail淇℃伅
 	 */
 	public List<TEmail> find() {
 		
@@ -78,15 +78,15 @@ public class EmailServiceImpl implements EmailService<TEmail>{
         System.out.println("contentType:"+uploadFileContentType);
         System.out.println("File:"+uploadFile);
         
-        //获取要保存文件夹的物理路径(绝对路径)
+        //鑾峰彇瑕佷繚瀛樻枃浠跺す鐨勭墿鐞嗚矾寰�(缁濆璺緞)
         String realPath=ServletActionContext.getServletContext().getRealPath("/upload");
         File file = new File(realPath);
         
-        //测试此抽象路径名表示的文件或目录是否存在。若不存在，创建此抽象路径名指定的目录，包括所有必需但不存在的父目录。
+        //娴嬭瘯姝ゆ娊璞¤矾寰勫悕琛ㄧず鐨勬枃浠舵垨鐩綍鏄惁瀛樺湪銆傝嫢涓嶅瓨鍦紝鍒涘缓姝ゆ娊璞¤矾寰勫悕鎸囧畾鐨勭洰褰曪紝鍖呮嫭鎵�鏈夊繀闇�浣嗕笉瀛樺湪鐨勭埗鐩綍銆�
         if(!file.exists())file.mkdirs();
         
         try {
-            //保存文件
+            //淇濆瓨鏂囦欢
             FileUtils.copyFile(uploadFile, new File(file,uploadFileFileName));
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,6 +105,12 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		
 		return email;
 		
+	}
+
+	@Override
+	public void updateIsDelete(Integer id) {
+		
+		emailMapper.updateIsDelete(id);
 	}
 
 

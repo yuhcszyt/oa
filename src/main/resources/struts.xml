@@ -19,7 +19,7 @@
 
 	<package name="UserLogin" namespace="/" extends="struts-default">
 
-		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
+		<action name="loginAction_*" class="com.honganwei.action.LoginAction" method="{1}">
 			<result name="login" >/WEB-INF/views/login.jsp</result>
 			<result name="home" >/WEB-INF/views/index.jsp</result>
 
@@ -28,7 +28,7 @@
 
 	
 
-	<include file="struts2/stuts2-tuser.xml"></include>
+	<!-- <include file="struts2/stuts2-tuser.xml"></include> -->
 	<include file="struts2/struts2-temail.xml"></include>			  
 
 

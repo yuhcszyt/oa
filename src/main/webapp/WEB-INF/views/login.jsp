@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@taglib uri="/struts-tags" prefix="s" %>
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -29,43 +29,16 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/member.css" />
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/member.js"></script>
 </head>
-<<<<<<< HEAD
-=======
 
->>>>>>> branch 'master' of https://github.com/yuhcszyt/oa
 <body>
 	<div class="login-top"></div>
 	<div class="login-area">
-<<<<<<< HEAD
-	
-	<s:form namespace="/" action="LoginAction_login" >
-		
-			<label>
-				工&nbsp;&nbsp;号：
-			</label>
-			<s:textfield name="username"></s:textfield>
-			
-			<label>
-				密&nbsp;&nbsp;码：
-			</label>
 
+		<form action="${pageContext.request.contextPath }/loginAction_login.action" method="post" onsubmit="return checksubmit();">
+			<label> 工&nbsp;&nbsp;号： </label>
 			
-			<s:password name="password"></s:password>
-			<s:submit value="登录" cssClass="btn"></s:submit>
-			
-			<%-- <a onclick="document.getElementById('loginform').submit();" href="#" id="loginform:j_id19" name="loginform:j_id19">
-						<span
-							id="loginform:loginBtn" class="login-sub"
-							style="margin-top:-36px;">登录</span>
-						</a> --%>
-			<br/>
-				<b><font color="red"></font></b>
-				<s:fielderror></s:fielderror>
-		</s:form>
-=======
-		<form action="${pageContext.request.contextPath }/userAction_login.action" method="post" onsubmit="return checksubmit();">
-			<label> 工&nbsp;&nbsp;号： </label> 
-			<input type="text" name="username" value="" id="checkUserName"  class="easyui-numberbox" required="true"/>
+			<input type="text" name="username" 
+			 id="checkUserName" required="true"/>
 			<span id="userName_text"></span>
 			<br />
 			<label> 密&nbsp;&nbsp;码： </label> 
@@ -74,8 +47,10 @@
 			<br />
 			<input type="submit" name="submit" class="login-sub" value="" /> <br />
 			<b><font color="red">${message}</font></b>
+			<s:fielderror></s:fielderror>
+			
 		</form>
->>>>>>> branch 'master' of https://github.com/yuhcszyt/oa
+
 	</div>
 	<div class="login-copyright"></div>
 </body>

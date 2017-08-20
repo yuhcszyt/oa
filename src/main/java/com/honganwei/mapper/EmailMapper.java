@@ -9,4 +9,6 @@ public interface EmailMapper extends BaseMapper<TEmail>{
 	
 	public TEmail selectById(int id);
 
+	public void updateIsDelete(Integer id);
+
 }

@@ -13,4 +13,7 @@ public interface EmailService<T> extends BaseService<T>{
 	
 	public TEmail findEmailById(int id);
 	
+
+	public void updateIsDelete(Integer id);
+	
 }

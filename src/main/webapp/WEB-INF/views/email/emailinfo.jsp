@@ -11,6 +11,22 @@
 </head>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/uploadck.js"></script>
+<script type="text/javascript">
+function disp_confirm()
+  {
+  var r=confirm("确定删除？")
+  if (r==true)
+    {
+	 var id= document.getElementById("email").getAttribute("emailId");
+    document.write("删除成功！")
+	window.location.href="${pageContext.request.contextPath}/emailAction/updateIsDelete.action?id="+id;
+    }
+  else
+    {
+    document.write("")
+    }
+  }
+</script>
 </head>
 
 <style type="text/css">
@@ -22,7 +38,7 @@
 <body>
 <div class="action">
 		<div class="t">
-			<b id="pageTitle">收邮件</b>
+			<b id="pageTitle">垃圾邮件</b>
 		</div>
 		<div class="pages">
 		<input type="hidden" value="-1" id="isFileOk">
@@ -43,8 +59,9 @@
 					<td align="left" width="30%">${email.content}</td>
 					<td align="left" width="30%">${email.isRead==0 ? '未读' : '已读' }</td>
 					<td align="left" width="30%"><fmt:formatDate value="${email.sendTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-					<td align="left" width="30%"><a href="#?id=${email.id}">删除</a></td>
-				</tr>
+					<td align="left" width="30%"><input type="button" onclick="disp_confirm()"value="删除"  id="email" emailId="${email.id}"/>
+				</tr></td>
+					
 				</c:forEach>
 				</c:if>
 			</table>

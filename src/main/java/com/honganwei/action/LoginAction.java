@@ -5,19 +5,15 @@ package com.honganwei.action;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Controller;
+
 
 
 
 import org.apache.struts2.ServletActionContext;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import com.honganwei.po.TUser;
 import com.honganwei.service.UserService;
-
-import com.honganwei.service.base.BaseService;
-
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -27,17 +23,13 @@ import com.opensymphony.xwork2.ModelDriven;
 
 
 
-public  class LoginAction extends BaseAction<TUser>{
 
-	private TUser tuser=new TUser();
-	@Override
-	public TUser getModel() {
-		// TODO Auto-generated method stub
-		return tuser;
-	}
+
+public  class LoginAction extends ActionSupport implements ModelDriven<TUser>{
+
+
+	private TUser user = new TUser();
 	
-
-
 	@Autowired
 	private UserService userService;
 	
@@ -45,22 +37,15 @@ public  class LoginAction extends BaseAction<TUser>{
 
 	public String login(){
 		
-	TUser	result=userService.login(tuser);
-		if(result==null){
-			this.addFieldError("", "�û��������");
-			return "login";
-		}
+	
 		
-		TUser user =userService.login(model);
+		TUser user1 =userService.login(user);
 		
-		if(user != null){
-			//��¼�ɹ�,��user�������session����ת����ҳ
-			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
-			return HOME;
+		if(user1 != null){
+			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user1);
+			return "home";
 		}else{
-			//��¼ʧ�ܣ�,������ʾ��Ϣ����ת����¼ҳ��
-			//�������֤�����,������ʾ��Ϣ����ת����¼ҳ��
-			this.addActionError("�û������������������");
+			this.addFieldError("","wahaha");
 			return LOGIN;
 		}
 	}
@@ -69,7 +54,14 @@ public  class LoginAction extends BaseAction<TUser>{
 	public String updateUser(){
 		
 		
-		return FINSH;
+		return "finsh";
+	}
+
+
+	@Override
+	public TUser getModel() {
+		// TODO Auto-generated method stub
+		return user;
 	}
 	
 

@@ -134,6 +134,20 @@ public class EmailAction extends BaseAction<TEmail>{
 	}
 	
 	
+	public String updateIsDelete(){
+		
+		emailService.updateIsDelete(model.getId());
+		
+		
+		return "updetaisdelete";
+		
+		
+		
+		
+	}
+	
+	
+	
 	public File getUploadFile() {
 		return uploadFile;
 	}
