@@ -96,7 +96,7 @@
 		}
 		
 		function showPage(num){
-			window.location.href="${pageContext.request.contextPath}/emailAction/emailInfo.action?pageNum="+num;
+			window.location.href="${pageContext.request.contextPath}/emailAction/toJunk.action?pageNum="+num;
 		}
 		
 		function todelete(id){
