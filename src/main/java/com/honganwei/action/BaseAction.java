@@ -3,11 +3,15 @@ package com.honganwei.action;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
 public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 
+	public static final ObjectMapper MAPPER =new ObjectMapper();
+	
+	
 	public static final String HOME = "home";
 	public static final String FINSH = "finsh";
 	

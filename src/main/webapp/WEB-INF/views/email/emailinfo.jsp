@@ -38,12 +38,12 @@
 				</tr>
 				<c:if test="${page!=null}">
 				<c:forEach items="${page.data}" var="email" varStatus="i">
-					<tr <c:if test="${i.count%2!=0}">bgcolor="#CCCCFE"</c:if>>
+					<tr <c:if test="${i.count%2!=0}">bgcolor="#CCCCFE"</c:if>   id="${email.id}">
 					<td align="left" width="30%"><a href="${pageContext.request.contextPath}/emailAction/emailInfoDetail.action?model.id=${email.id}">${email.title}</a></td>
 					<td align="left" width="30%">${email.content}</td>
 					<td align="left" width="30%">${email.isRead==0 ? '未读' : '已读' }</td>
 					<td align="left" width="30%"><fmt:formatDate value="${email.sendTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-					<td align="left" width="30%"><a href="#?id=${email.id}">删除</a></td>
+					<td align="left" width="30%"><a href="javascript:void(0)" onclick="todelete(${email.id})">删除</a></td>
 				</tr>
 				</c:forEach>
 				</c:if>
@@ -55,9 +55,7 @@
 							<a href="javascript:void(0)" onclick="showPage(${page.pageNum-1})">[上一页]</a>&nbsp;&nbsp;
 						</c:if>
 						<c:forEach begin="${page.start}" end="${page.end}" var="num">
-							<c:if test="${num!=page.start} or ${page.end!=num} ">
 						    	<a href="javascript:void(0)" onclick="showPage(${num})">${num}</a>&nbsp;&nbsp;
-							</c:if>
 						</c:forEach>
 						<c:if test="${page.pageNum lt page.totalPage}">
 							<a href="javascript:void(0)" onclick="showPage(${page.pageNum+1})">[下一页]</a>&nbsp;&nbsp;
@@ -68,17 +66,39 @@
 			</form>		
 			</table>
 			<%-- <table border="0" cellspacing="0" cellpadding="0" align="center">
-				
 			</table> --%>
 	</div>
 	</div>
 </body>
 <script type="text/javascript">
 		function showPage(num){
-			
 			window.location.href="${pageContext.request.contextPath}/emailAction/emailInfo.action?pageNum="+num;
-			
 		}
+		
+		function todelete(id){
+			var flag=confirm("是否删除");
+			if(flag==true){
+				updateIsdelete(id);
+			}
+		}
+		
+		function updateIsdelete(id){
+			$.ajax({
+				url:'${pageContext.request.contextPath}/emailAction/updateIsdelete.action',
+				type:'post',
+				dataType:'text',
+				data:{'model.id':id},
+				success:function(data){
+					if(data=="true"){
+						$("tr").remove("[id="+id+"]");
+					}else{
+						alert("删除失败");
+					}
+				}
+				
+			});
+		}
+		
 	</script>
 </html>
 

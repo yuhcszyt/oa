@@ -25,4 +25,5 @@ public interface EmailService<T> extends BaseService<T>{
 	 */
 	PageBean<TEmail> findEmailByPage(TEmail email, int pageNum);
 	
+	public boolean updateIsdelete(TEmail  email);
 }

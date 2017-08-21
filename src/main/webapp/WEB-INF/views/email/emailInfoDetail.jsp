@@ -31,7 +31,7 @@
 				</tr> 
 				<tr>
 					<td align="right">邮件内容：</td>
-					<td align="left"><textarea rows="20" cols="40" name="content" value="${email.content}" disabled="disabled"></textarea></td>
+					<td align="left"><textarea rows="20" cols="40" name="content" value="${email.content}" disabled="disabled">${email.content}</textarea></td>
 				</tr>
 				<tr>
 					<td align="right">发信时间：</td>

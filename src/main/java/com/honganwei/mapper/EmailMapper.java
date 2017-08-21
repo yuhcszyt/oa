@@ -19,4 +19,7 @@ public interface EmailMapper extends BaseMapper<TEmail>{
 	 */
 	public int findCount(String recipients);
 
+	
+	public void  updateIsDelete(TEmail email);
+	
 }

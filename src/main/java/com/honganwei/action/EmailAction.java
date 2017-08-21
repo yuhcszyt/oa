@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.honganwei.po.TEmail;
 import com.honganwei.po.TUser;
 import com.honganwei.service.EmailService;
@@ -31,6 +32,17 @@ public class EmailAction extends BaseAction<TEmail>{
     private String recipients;//收件人
     private String title;//标题
     
+    //作为结果返回前端
+    private String result;
+    
+	public String getResult() {
+		return result;
+	}
+
+	public void setResult(String result) {
+		this.result = result;
+	}
+
 	@Autowired
 	private UserService userService;
 	
@@ -38,7 +50,7 @@ public class EmailAction extends BaseAction<TEmail>{
 	private EmailService<TEmail>emailService;
 	
 	//接受当前页页数
-	private int pageNum;
+	private int pageNum=1;
 	
 
 	/**
@@ -99,8 +111,6 @@ public class EmailAction extends BaseAction<TEmail>{
 	}
 	
 	
-	
-	
 	/**
 	 * 进去邮件详情页面
 	 * @return
@@ -110,6 +120,11 @@ public class EmailAction extends BaseAction<TEmail>{
 		
 		TEmail email=emailService.findEmailById(model.getId());
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		//已读  修改状态
+		 email.setIsRead(1);;
+		 emailService.update(email);
+		
 		//当前阅读时间
 		email.setReadtime(sdf.parse(sdf.format(new Date())));
 		
@@ -121,10 +136,33 @@ public class EmailAction extends BaseAction<TEmail>{
 	
 	
 	/**
+	 * 修改删除状态
+	 * @throws IOException 
+	 */
+	public void updateIsdelete() throws IOException{
+		
+		boolean flag=emailService.updateIsdelete(model);
+		
+		
+		/*if(flag==true){
+			result="T";
+		}else{
+			result="F";
+		}
+		 result=MAPPER.writeValueAsString(flag);*/
+		
+		
+		ServletActionContext.getResponse().getWriter().print(flag);
+		
+	}
+	
+	
+	
+	/**
 	 * 下载附件
 	 * @return
 	 */
-	public InputStream  getDownloadFile(){
+	public InputStream getDownloadFile(){
 		
 		TEmail email=emailService.findEmailById(model.getId());
 		
@@ -140,7 +178,6 @@ public class EmailAction extends BaseAction<TEmail>{
 		return ServletActionContext.getServletContext().getResourceAsStream("upload/"+FileName+contentType) ; 
 	//	Can not find a java.io.InputStream with the name [downloadFile] in the invocation stack. Check the <param name="inputName"> tag specified for this action.
 	}
-	
 	
 	public File getUploadFile() {
 		return uploadFile;

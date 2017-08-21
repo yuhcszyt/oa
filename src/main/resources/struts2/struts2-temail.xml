@@ -4,7 +4,6 @@
     "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
-
 	<package name="email" namespace="/emailAction" extends="struts-default">
 		<!-- 进入写邮件页面 -->
 		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
@@ -32,12 +31,14 @@
            <result name="success" type="stream">  
                <param name="contentType">text/plain</param>  
                <param name="contentDisposition">attachment;fileName="${fileName}"</param>  
-               <param name="inputName">downloadFile</param>  
+               <param name="inputName">downloadFile</param> 
                <param name="bufferSize">1024</param>  
            </result>  
        </action>  
-		
-		
+       
+       <action name="updateIsdelete" class="com.honganwei.action.EmailAction" method="updateIsdelete" >
+       </action>
+       
 	</package>
 				  
 </struts>

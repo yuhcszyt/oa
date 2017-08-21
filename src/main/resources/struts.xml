@@ -17,6 +17,7 @@
 		
 	</package>
 
+
 	<package name="UserLogin" namespace="/" extends="struts-default">
 
 		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">

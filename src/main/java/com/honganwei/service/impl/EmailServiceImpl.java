@@ -116,14 +116,10 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		
 		int totalRecord=emailMapper.findCount(email.getRecipients());
 		
-		if(pageNum==0){
-			pageNum=1;
-		}
-		
 		Map map =new HashMap<String,Object>();
 		PageBean page=new PageBean<TEmail>(pageNum, 6, totalRecord);
 		map.put("page",page);
-	
+ 	    
 		map.put("email",email);
 		
 		List<TEmail> list =emailMapper.selectByPage(map);
@@ -132,5 +128,19 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		return page;
 	}
 
+	
+	/**
+	 * @param email
+	 * @return
+	 */
+	public boolean updateIsdelete(TEmail  email){
+		
+		try {
+			emailMapper.updateIsDelete(email);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
+	}
 
 }
