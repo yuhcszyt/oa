@@ -38,7 +38,7 @@
 				</tr>
 				<c:if test="${page!=null}">
 				<c:forEach items="${page.data}" var="email" varStatus="i">
-					<tr <c:if test="${i.count%2!=0}">bgcolor="#CCCCFE"</c:if>   id="${email.id}">
+					<tr <%-- <c:if test="${i.count%2!=0}">bgcolor="#CCCCFE"</c:if> --%>   id="${email.id}">
 					<td align="left" width="30%"><a href="${pageContext.request.contextPath}/emailAction/emailInfoDetail.action?model.id=${email.id}">${email.title}</a></td>
 					<td align="left" width="30%">${email.content}</td>
 					<td align="left" width="30%">${email.isRead==0 ? '未读' : '已读' }</td>
@@ -71,6 +71,29 @@
 	</div>
 </body>
 <script type="text/javascript">
+
+		$(function(){
+			updateColor();
+		})
+		//修改样式
+		function updateColor(){
+			
+			var size=$("tr[id]").size();
+			
+			for(var i=0;i<size;i++){
+				$("tr[id] :eq("+i+")").css({background:"null"});
+				if(i%2==0){
+					$("tr[id] :eq("+i+")").css({background:"#CCCCFE" });
+				}
+			}
+			
+			/* var dom=$("tr[id]").get(0);
+			for(var num in dom ){
+				
+			} */
+
+		}
+		
 		function showPage(num){
 			window.location.href="${pageContext.request.contextPath}/emailAction/emailInfo.action?pageNum="+num;
 		}
@@ -91,6 +114,8 @@
 				success:function(data){
 					if(data=="true"){
 						$("tr").remove("[id="+id+"]");
+						//修改样式
+						updateColor();
 					}else{
 						alert("删除失败");
 					}

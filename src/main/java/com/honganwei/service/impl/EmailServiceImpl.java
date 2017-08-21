@@ -111,6 +111,7 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public PageBean<TEmail> findEmailByPage(TEmail email,int pageNum) {
 		
