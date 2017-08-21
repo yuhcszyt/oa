@@ -38,7 +38,13 @@
        
        <action name="updateIsdelete" class="com.honganwei.action.EmailAction" method="updateIsdelete" >
        </action>
-       
+        <action name="toJunk" class="com.honganwei.action.EmailAction" method="toJunk" >
+        	<result name="junk">/WEB-INF/views/email/emailJunkByYu.jsp</result>
+       </action>
+        <action name="recoverIsdelete" class="com.honganwei.action.EmailAction" method="recoverIsdelete" >
+       </action>
+         <action name="deleteEmail" class="com.honganwei.action.EmailAction" method="deleteEmail" >
+       </action>
 	</package>
 				  
 </struts>

@@ -8,7 +8,7 @@ public interface BaseService<T>{
 	
 	public void update(T t);
 	
-	public void delete(T t);
+	public boolean delete(T t);
 	
 	public void insert(T t);
 }

@@ -38,7 +38,7 @@
 							<a href="${pageContext.request.contextPath}/emailAction/emailInfo.action" target="main">收邮件</a>
 						</dd>
 						<dd>
-							<a href="mailGarage!garage.action" target="_self">垃圾邮件</a>
+							<a href="${pageContext.request.contextPath}/emailAction/toJunk.action" target="main">垃圾邮件</a>
 						</dd>
 					</dl>
 					<dl>

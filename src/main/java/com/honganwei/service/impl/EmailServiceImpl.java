@@ -41,10 +41,6 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		emailMapper.update(t);
 	}
 
-	@Override
-	public void delete(TEmail t) {
-		emailMapper.update(t);
-	}
 
 	@Override
 	public void insert(TEmail t) {
@@ -114,8 +110,8 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 	@SuppressWarnings("unchecked")
 	@Override
 	public PageBean<TEmail> findEmailByPage(TEmail email,int pageNum) {
-		
-		int totalRecord=emailMapper.findCount(email.getRecipients());
+		email.setIsdelete(0);
+		int totalRecord=emailMapper.findCount(email);
 		
 		Map map =new HashMap<String,Object>();
 		PageBean page=new PageBean<TEmail>(pageNum, 6, totalRecord);
@@ -139,9 +135,40 @@ public class EmailServiceImpl implements EmailService<TEmail>{
 		try {
 			emailMapper.updateIsDelete(email);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 		return true;
+	}
+
+	@Override
+	public boolean delete(TEmail t) {
+
+		try {
+			emailMapper.delete(t);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
+	}
+
+	@Override
+	public PageBean<TEmail> findJunkEmailByPage(TEmail model, int pageNum) {
+		//这里不想做了
+		model.setIsdelete(1);
+		int totalRecord=emailMapper.findCount(model);
+		
+		Map map =new HashMap<String,Object>();
+		PageBean page=new PageBean<TEmail>(pageNum, 6, totalRecord);
+		map.put("page",page);
+ 	    
+		map.put("email",model);
+		
+		List<TEmail> list =emailMapper.selectByPage(map);
+		page.setData(list);
+		
+		return page;
 	}
 
 }

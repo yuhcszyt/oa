@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.honganwei.mapper.EmailMapper">
 	<sql id="where_queryTEmail">
 		<where>
-		   and t.isDelete=0
+		   and t.isDelete=#{email.isdelete}
 			<if test="email!=null">
 				<if test="email.recipients!=null and email.recipients!=''">
 				  and t.recipients=#{email.recipients}
@@ -30,11 +30,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</insert>
 	
 	<delete id="delete" parameterType="Temail">
-	delete form email t where t.userId=#{userId} and t.id=#{id} 
+	delete  from t_email   
+	<where>
+		<if test="recipients!=null and recipients!=''">
+			and recipients=#{recipients}
+		</if>
+		 and  id=#{id} 
+	</where>
 	</delete>
 	
 	<select id="selectById" parameterType="int" resultType="Temail">
-		SELECT * FROM t_email  t WHERE t.id=#{id};
+		SELECT * FROM t_email   WHERE id=#{id};
 	</select>
 	
 	<select id="selectByPage" parameterType="java.util.Map" resultType="Temail">
@@ -42,14 +48,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="where_queryTEmail"></include>
 	</select>
 	
-	<select id="findCount" parameterType="java.lang.String" resultType="int">
-		SELECT count(*) FROM t_email  t where t.recipients=#{str} and t.isdelete=0;
+	<select id="findCount" parameterType="Temail" resultType="int">
+		SELECT count(*) FROM t_email  t where t.recipients=#{recipients} and t.isdelete=#{isdelete};
 	</select>
 	<select id="update" parameterType="Temail">
-		   UPDATE t_email t SET t.isread=1 WHERE t.id=#{id};
+		   UPDATE t_email t SET t.isread=#{isread} WHERE t.id=#{id};
 	</select>
 	
 	<select id="updateIsDelete" parameterType="Temail">
-		   UPDATE t_email t SET t.isDelete=1 WHERE t.id=#{id};
+		   UPDATE t_email t SET t.isDelete=#{isdelete} WHERE t.id=#{id};
 	</select>
 </mapper>

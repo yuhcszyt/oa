@@ -24,6 +24,13 @@ public interface EmailService<T> extends BaseService<T>{
 	 * @return
 	 */
 	PageBean<TEmail> findEmailByPage(TEmail email, int pageNum);
-	
+	/**
+	 * 更新删除状态
+	 * @param email
+	 * @return
+	 */
 	public boolean updateIsdelete(TEmail  email);
+
+	public PageBean<TEmail> findJunkEmailByPage(TEmail model, int pageNum);
+	
 }

@@ -141,6 +141,7 @@ public class EmailAction extends BaseAction<TEmail>{
 	 */
 	public void updateIsdelete() throws IOException{
 		
+		model.setIsdelete(1);
 		boolean flag=emailService.updateIsdelete(model);
 		
 		
@@ -156,6 +157,65 @@ public class EmailAction extends BaseAction<TEmail>{
 		
 	}
 	
+	/**
+	 * 进入垃圾邮件信息页面
+	 * @return
+	 */
+	public String toJunk(){
+		
+		model.setRecipients("546345");
+		
+		//List<TEmail>emailList=emailService.find();
+		PageBean<TEmail> page=emailService.findJunkEmailByPage(model,pageNum);
+		HttpServletRequest request = ServletActionContext.getRequest();
+		
+		request.setAttribute("page",page);;
+		
+		
+		return "junk";
+	}
+	
+	
+	
+	
+	/**
+	 * 回复删除状态
+	 * @throws IOException 
+	 */
+	public void recoverIsdelete() throws IOException{
+		
+		model.setIsdelete(0);
+		boolean flag=emailService.updateIsdelete(model);
+		
+		/*if(flag==true){
+			result="T";
+		}else{
+			result="F";
+		}
+		 result=MAPPER.writeValueAsString(flag);*/
+		
+		ServletActionContext.getResponse().getWriter().print(flag);
+		
+	}
+	
+	
+	/**
+	 * 删除邮件
+	 * @throws IOException 
+	 */
+	public void deleteEmail() throws IOException {
+		
+		boolean flag=emailService.delete(model);
+		
+		/*if(flag==true){
+			result="T";
+		}else{
+			result="F";
+		}
+		 result=MAPPER.writeValueAsString(flag);*/
+		
+		ServletActionContext.getResponse().getWriter().print(flag);
+	}
 	
 	
 	/**
