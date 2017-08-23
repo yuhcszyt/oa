@@ -22,13 +22,10 @@ public  class LoginAction extends BaseAction<TUser>{
 		TUser user =userService.login(model);
 		
 		if(user != null){
-			//��¼�ɹ�,��user�������session����ת����ҳ
 			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
 			return HOME;
 		}else{
-			//��¼ʧ�ܣ�,������ʾ��Ϣ����ת����¼ҳ��
-			//�������֤�����,������ʾ��Ϣ����ת����¼ҳ��
-			this.addActionError("�û������������������");
+			this.addActionError("haha");
 			return LOGIN;
 		}
 	}
