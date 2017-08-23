@@ -1,61 +1,44 @@
 package com.honganwei.action;
 
 
-<<<<<<< HEAD
+
 
 import java.io.IOException;
-import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.honganwei.po.TUser;
 import com.honganwei.service.UserService;
 
 
 
-public  class LoginAction extends BaseAction<TUser>{
-
-	private String result;
-	
-=======
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.apache.struts2.ServletActionContext;
-import com.honganwei.po.TUser;
-import com.honganwei.service.UserService;
+
 
 public  class LoginAction extends BaseAction<TUser>{
 
 
->>>>>>> master
+
 	@Autowired
 	private UserService userService;
 	
 	//private static  ObjectMapper MAPPER =new ObjectMapper(); 
 	
-<<<<<<< HEAD
-	public String login() throws IOException{
-=======
 
-	public String login(){
->>>>>>> master
-		
+	public String login() throws IOException{
+
 		
 		TUser user =userService.login(model);
 		
-<<<<<<< HEAD
+
 		try {
-			//String result=MAPPER.writeValueAsString(user);
+			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
 			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
 			ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
-			//3.2 发送
-			//if(result==null||result.equals("")){
-			//System.out.println(result);
+			
 			if(user!=null){
 				
 				ServletActionContext.getResponse().getWriter().print("true");
@@ -64,14 +47,6 @@ public  class LoginAction extends BaseAction<TUser>{
 			}
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
-=======
-		if(user != null){
-			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
-			return HOME;
-		}else{
-			this.addActionError("haha");
-			return LOGIN;
->>>>>>> master
 		}
 		return null;
 	}
@@ -79,11 +54,10 @@ public  class LoginAction extends BaseAction<TUser>{
 	
 	public String updateUser(){
 		
-		
 		return FINSH;
 	}
 	
-<<<<<<< HEAD
+
 	public String home(){
 		
 		return "home";
@@ -112,9 +86,9 @@ public  class LoginAction extends BaseAction<TUser>{
 		return "none";
 	}*/
 	
-=======
 
->>>>>>> master
+
+
 }
 
 

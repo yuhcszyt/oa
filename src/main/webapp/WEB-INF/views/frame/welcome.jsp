@@ -24,6 +24,7 @@
 			$("select").attr("disabled", false);
 			$("#pageTitle").html("编辑个人信息");
 			var backPath = $("#backPath").val();
+			var inserPath = $("#inserPath").val();
 			$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
 		});
 

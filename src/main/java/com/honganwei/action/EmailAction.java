@@ -270,16 +270,6 @@ public class EmailAction extends BaseAction<TEmail>{
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-<<<<<<< HEAD
-*/
-/*	
-	public String writeEmail(){
-		
-	/*	List<TUser>list = userService.find();
-		ActionContext.getContext().put("userList",list);*/
-	/*	return "write";*/
-	}
-=======
 	
 	
 	public String getRecipients() {
@@ -316,4 +306,3 @@ public class EmailAction extends BaseAction<TEmail>{
 	}
 	
 }
->>>>>>> master

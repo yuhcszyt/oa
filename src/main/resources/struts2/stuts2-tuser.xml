@@ -15,9 +15,7 @@
 		<action name="LoginAction_*" class="com.honganwei.action.LoginAction" method="{1}">
 			<result name="login" >/WEB-INF/views/login.jsp</result>
 			<result name="home">/WEB-INF/views/index.jsp</result>
-			<!-- <result type="json">
-				<param name="root">result</param>
-			</result> -->
+			<result name="finsh">/WEB-INF/views/frame/welcome.jsp</result>
 		</action>
 	</package> 
 

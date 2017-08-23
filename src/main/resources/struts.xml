@@ -10,7 +10,6 @@
 		<constant name="struts.objectFactory" value="spring"/>
 	 -->
 	<package name="common" namespace="/" extends="struts-default">
-<<<<<<< HEAD
  		<!-- <interceptors>
 			
 
@@ -37,29 +36,3 @@
 
 	<include file="struts2/stuts2-tuser.xml"></include>
 </struts>
-=======
-	
-		<action  name="uiAction_*_*">
-			<result>/WEB-INF/views/{1}/{2}.jsp</result>
-		</action>
-		
-	</package>
-
-
-	<package name="UserLogin" namespace="/" extends="struts-default">
-
-		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
-			<result name="login" >/WEB-INF/views/login.jsp</result>
-			<result name="home" >/WEB-INF/views/index.jsp</result>
-
-		</action>
-	</package> 
-
-	
-
-	<include file="struts2/stuts2-tuser.xml"></include>
-	<include file="struts2/struts2-temail.xml"></include>			  
-
-
-</struts>
->>>>>>> master
