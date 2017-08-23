@@ -23,7 +23,7 @@ public  class LoginAction extends BaseAction<TUser>{
 	@Autowired
 	private UserService userService;
 	
-	private static  ObjectMapper MAPPER =new ObjectMapper(); 
+	//private static  ObjectMapper MAPPER =new ObjectMapper(); 
 	
 	public String login() throws IOException{
 		
@@ -35,7 +35,7 @@ public  class LoginAction extends BaseAction<TUser>{
 			ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
 			//3.2 发送
 			//if(result==null||result.equals("")){
-			System.out.println(result);
+			//System.out.println(result);
 			if(user!=null){
 				ServletActionContext.getResponse().getWriter().print("true");
 			}else{

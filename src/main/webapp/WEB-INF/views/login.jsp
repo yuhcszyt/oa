@@ -33,10 +33,11 @@ function login(){
 	
 	$.ajax({
 		type:'post',
-		date:$('input').serialize(),
+		data:$('input').serialize(),
+		Datetype:'text',
 		url:'${pageContext.request.contextPath}/LoginAction_login.action',
         success:function(data){
-			if(data='false'||data==false){
+			if(data=='false'||data==false){
 				$("#login_text").html('<font color="red">登录错误</font>');
 			}else{
 				document.location.href="${pageContext.request.contextPath}/LoginAction_home.action";

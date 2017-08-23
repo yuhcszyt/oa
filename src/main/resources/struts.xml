@@ -9,24 +9,28 @@
 	<!-- 
 		<constant name="struts.objectFactory" value="spring"/>
 	 -->
-	<!-- <package name="common" namespace="/" extends="struts-default">
+	<package name="common" namespace="/" extends="struts-default">
  		<interceptors>
-			注册自定义拦截器
+			<!-- 注册自定义拦截器 -->
 			<interceptor name="oaloginfilter" class="com.honganwei.filter.OALoginfilter">
-				指定哪些方法不需要拦截
+				<!-- 指定哪些方法不需要拦截 -->
 				<param name="excludeMethods">login</param>
 			</interceptor>
-			定义拦截器栈
+			<!-- 定义拦截器栈 -->
 			<interceptor-stack name="myStack">
 				<interceptor-ref name="oaloginfilter"></interceptor-ref>
 				<interceptor-ref name="defaultStack"></interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
 		<default-interceptor-ref name="myStack"/> 
+		
+		<!-- http://localhost:8080/oa/uiAction_frame_leftmenu.action
+		http://localhost:8080/oa/uiAction_frame_welcome.action -->
+		
 		<action  name="uiAction_*_*">
 			<result>/WEB-INF/views/{1}/{2}.jsp</result>
 		</action>
-	</package> -->
+	</package> 
 
 	<include file="struts2/stuts2-tuser.xml"></include>
 </struts>
