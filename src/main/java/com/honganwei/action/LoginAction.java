@@ -1,6 +1,7 @@
 package com.honganwei.action;
 
 
+<<<<<<< HEAD
 
 import java.io.IOException;
 import java.util.List;
@@ -20,15 +21,34 @@ public  class LoginAction extends BaseAction<TUser>{
 
 	private String result;
 	
+=======
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.apache.struts2.ServletActionContext;
+import com.honganwei.po.TUser;
+import com.honganwei.service.UserService;
+
+public  class LoginAction extends BaseAction<TUser>{
+
+
+>>>>>>> master
 	@Autowired
 	private UserService userService;
 	
 	//private static  ObjectMapper MAPPER =new ObjectMapper(); 
 	
+<<<<<<< HEAD
 	public String login() throws IOException{
+=======
+
+	public String login(){
+>>>>>>> master
+		
 		
 		TUser user =userService.login(model);
 		
+<<<<<<< HEAD
 		try {
 			//String result=MAPPER.writeValueAsString(user);
 			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
@@ -44,6 +64,14 @@ public  class LoginAction extends BaseAction<TUser>{
 			}
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
+=======
+		if(user != null){
+			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
+			return HOME;
+		}else{
+			this.addActionError("haha");
+			return LOGIN;
+>>>>>>> master
 		}
 		return null;
 	}
@@ -55,6 +83,7 @@ public  class LoginAction extends BaseAction<TUser>{
 		return FINSH;
 	}
 	
+<<<<<<< HEAD
 	public String home(){
 		
 		return "home";
@@ -83,7 +112,12 @@ public  class LoginAction extends BaseAction<TUser>{
 		return "none";
 	}*/
 	
+=======
+
+>>>>>>> master
 }
+
+
 
 
  

@@ -27,6 +27,7 @@
 	type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/member.css" />
 </head>
+<<<<<<< HEAD
 <script type="text/javascript">
 
 function login(){
@@ -54,6 +55,15 @@ function login(){
 	<div class="login-top"></div>
 	<div class="login-area">
 		<form  id="loginfrom" onsubmit="return checksubmit();">
+=======
+
+
+<body>
+	<div class="login-top"></div>
+	<div class="login-area">
+
+		<form action="${pageContext.request.contextPath }/userAction_login.action" method="post" onsubmit="return checksubmit();">
+>>>>>>> master
 			<label> 工&nbsp;&nbsp;号： </label> 
 			<input type="text" name="username" value="" id="checkUserName"  class="easyui-numberbox" required="true"/>
 			<span id="userName_text"></span>
@@ -62,9 +72,15 @@ function login(){
 			<input type="password" name="password" id="checkPassWord"  class="easyui-validatebox" required="true" /> 
 			<span id="passWord_text"></span>
 			<br />
+<<<<<<< HEAD
 			<input type="button" name="submit" class="login-sub" value="" onclick="login()"/><span id="login_text"></span><br/>
 		<b><font color="red"></font></b>
 		</form>
+=======
+			<input type="submit" name="submit" class="login-sub" value="" /> <br />
+			<b><font color="red">${message}</font></b>
+		</form>
+>>>>>>> master
 	</div>
 	<div class="login-copyright"></div>
 </body>

@@ -5,15 +5,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.honganwei.mapper.UserMapper">
 
-	
-	
-	<select id="findAll"  resultType="Tuser">
+
+
+	<select id="findAll" resultType="Tuser">
+
 		Select * from t_user
 	</select>
 
 	<select id="selectUserByID" parameterType="Tuser" resultType="TUser">
         select * from t_user where t_user.username = #{username} and t_user.password = #{password}
     </select>
+
 
 
 </mapper>

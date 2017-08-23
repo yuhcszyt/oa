@@ -3,20 +3,59 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.honganwei.mapper.EmailMapper">
 	
+<mapper namespace="com.honganwei.mapper.EmailMapper">
+	<sql id="where_queryTEmail">
+		<where>
+		   and t.isDelete=#{email.isdelete}
+			<if test="email!=null">
+				<if test="email.recipients!=null and email.recipients!=''">
+				  and t.recipients=#{email.recipients}
+				</if>
+			</if>
+			 <if test="page!=null">
+			 	 limit #{page.startIndex},#{page.pageSize}
+			</if>
+		</where>
+	</sql>
 	
 	<select id="findAll"  resultType="Temail">
 		Select * from t_email
 	</select>
 	
 	<insert id="insert" parameterType="Temail">
-		INSERT INTO t_email (recipients,sender,title,content,enclosure,sendtime,isread,readtime,isdelete,userId)
+		INSERT INTO t_email (recipients,sender,title,content,enclosure,sendtime,isread,readtime,isdelete)
 		VALUES(#{recipients},#{sender},#{title},#{content},#{enclosure},#{sendTime},#{isRead},#{readtime},
-		#{isdelete},#{UserId}) 
+		#{isdelete}) 
 	</insert>
 	
 	<delete id="delete" parameterType="Temail">
-	delete form email t where t.userId=#{userId} and t.id=#{id} 
+	delete  from t_email   
+	<where>
+		<if test="recipients!=null and recipients!=''">
+			and recipients=#{recipients}
+		</if>
+		 and  id=#{id} 
+	</where>
 	</delete>
+	
+	<select id="selectById" parameterType="int" resultType="Temail">
+		SELECT * FROM t_email   WHERE id=#{id};
+	</select>
+	
+	<select id="selectByPage" parameterType="java.util.Map" resultType="Temail">
+		SELECT * FROM t_email  t
+		<include refid="where_queryTEmail"></include>
+	</select>
+	
+	<select id="findCount" parameterType="Temail" resultType="int">
+		SELECT count(*) FROM t_email  t where t.recipients=#{recipients} and t.isdelete=#{isdelete};
+	</select>
+	<select id="update" parameterType="Temail">
+		   UPDATE t_email t SET t.isread=#{isread} WHERE t.id=#{id};
+	</select>
+	
+	<select id="updateIsDelete" parameterType="Temail">
+		   UPDATE t_email t SET t.isDelete=#{isdelete} WHERE t.id=#{id};
+	</select>
 </mapper>

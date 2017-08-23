@@ -38,10 +38,21 @@ CREATE TABLE `t_email` (
   `isread` INT(11) DEFAULT '0',
   `readtime` DATE DEFAULT NULL,
   `isdelete` INT(11) DEFAULT '0',
-  `userId` INT(4) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=INNODB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8
-ALTER TABLE `oa`.`t_email`     CHANGE `userId` `username` INT(4) NOT NULL;
+
+-- 插入邮件数据 
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('1','100000','100000','邮件标题测试1','广东省深圳市','F:/java/upload/20160422/20160422191720446.zip','2017-08-09','1','2017-08-09','1');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('2','100001','100002','邮件标题测试2','广东省深圳市','','2017-08-09','0','0000-00-00','0');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('3','100002','100001','邮件标题测试3','广东省深圳市','F:/java/upload/20160422/20160422191720446.zip','2017-08-09','0','0000-00-00','0');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('4','100000','100001','邮件标题测试4','','','2017-08-09','0','0000-00-00','0');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('5','100000','100001','邮件标题测试5','','F:/java/upload/20160422/20160422191720446.zip','2017-08-09','0','0000-00-00','1');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('6','100002','100001','邮件标题测试6','广东省深圳市','','2017-08-09','0','0000-00-00','1');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('7','100002','100001','邮件标题测试6','广东省深圳市','','2017-08-09','0','0000-00-00','1');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('8','546345','小彭','gfd','E:\\mars\\workspace\\oa\\src\\main\\webapp\\uploadcat wedding.jpg','E:\\mars\\workspace\\oa\\src\\main\\webapp\\uploadcat wedding.jpg','2017-08-16','0',NULL,'0');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('9','546345','小彭','dsa','E:\\mars\\workspace\\oa\\src\\main\\webapp\\uploadcat wedding.jpg','E:\\mars\\workspace\\oa\\src\\main\\webapp\\uploadcat wedding.jpg','2017-08-16','0',NULL,'0');
+insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`) values('10','','小彭','www','E:\\mars\\workspace\\oa\\src\\main\\webapp\\uploadPenguins.jpg','E:\\mars\\workspace\\oa\\src\\main\\webapp\\uploadPenguins.jpg','2017-08-16','0',NULL,'0');
+
 
 
 -- 创建考勤表
@@ -62,14 +73,6 @@ CREATE TABLE IF NOT EXISTS t_attend(
 );
 
 
--- 插入邮件数据
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('1','100000','100000','邮件标题测试1','广东省深圳市','F:/java/upload/20160422/20160422191720446.zip','2017-08-09','1','2017-08-09','1','0');
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('2','100001','100002','邮件标题测试2','广东省深圳市','','2017-08-09','0','0000-00-00','0','0');
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('3','100002','100001','邮件标题测试3','广东省深圳市','F:/java/upload/20160422/20160422191720446.zip','2017-08-09','0','0000-00-00','0','0');
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('4','100000','100001','邮件标题测试4','','','2017-08-09','0','0000-00-00','0','0');
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('5','100000','100001','邮件标题测试5','','F:/java/upload/20160422/20160422191720446.zip','2017-08-09','0','0000-00-00','1','0');
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('6','100002','100001','邮件标题测试6','广东省深圳市','','2017-08-09','0','0000-00-00','1','0');
-insert into `t_email` (`id`, `recipients`, `sender`, `title`, `content`, `enclosure`, `sendtime`, `isread`, `readtime`, `isdelete`, `username`) values('7','100002','100001','邮件标题测试6','广东省深圳市','','2017-08-09','0','0000-00-00','1','0');
 
 
 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+
+	<package name="email" namespace="/emailAction" extends="struts-default">
+		<!-- 进入写邮件页面 -->
+		<action name="write" class="com.honganwei.action.EmailAction" method="writeEmail">
+			<result name="write">/WEB-INF/views/email/writeEmail.jsp</result>
+		</action>
+		<!-- 写邮件操作-->
+		<action name="insertEmail" class="com.honganwei.action.EmailAction" method="insertEmail">
+			<!-- <result name="success" type="redirectAction">/WEB-INF/views/email/writeEmail.jsp</result> -->
+			<result name="success" type="redirectAction">
+				<param name="namespace">/emailAction</param>
+				<param name="actionName">write</param>
+			</result>
+		</action>
+		 <!-- 收邮件信息页面-->
+		<action name="emailInfo" class="com.honganwei.action.EmailAction" method="emailInfo">
+			<result name="emailInfo">/WEB-INF/views/email/emailinfo.jsp</result>
+		</action>
+		
+		 <!-- 邮件详情页面-->
+		<action name="emailInfoDetail" class="com.honganwei.action.EmailAction" method="emailInfoDetail">
+			<result name="emailInfoDetail">/WEB-INF/views/email/emailInfoDetail.jsp</result>
+		</action>
+		
+		 <action name="FileDownload" class="com.honganwei.action.EmailAction">  
+           <result name="success" type="stream">  
+               <param name="contentType">text/plain</param>  
+               <param name="contentDisposition">attachment;fileName="${fileName}"</param>  
+               <param name="inputName">downloadFile</param> 
+               <param name="bufferSize">1024</param>  
+           </result>  
+       </action>  
+       
+       <action name="updateIsdelete" class="com.honganwei.action.EmailAction" method="updateIsdelete" >
+       </action>
+        <action name="toJunk" class="com.honganwei.action.EmailAction" method="toJunk" >
+        	<result name="junk">/WEB-INF/views/email/emailJunkByYu.jsp</result>
+       </action>
+        <action name="recoverIsdelete" class="com.honganwei.action.EmailAction" method="recoverIsdelete" >
+       </action>
+         <action name="deleteEmail" class="com.honganwei.action.EmailAction" method="deleteEmail" >
+       </action>
+	</package>
+				  
+</struts>

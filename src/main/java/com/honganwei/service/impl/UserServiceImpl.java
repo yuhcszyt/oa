@@ -2,7 +2,8 @@ package com.honganwei.service.impl;
 
 import java.util.List;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,5 +22,26 @@ public class UserServiceImpl implements UserService{
 	public TUser login(TUser user) {
 		return userMapper.selectUserByID(user);
 	}
-	
+
+
+	/**
+	 * 查询所有的用户
+	 */
+	public List<TUser> find() {
+		return userMapper.findAll();
 }
+
+
+	
+	
+	
+	
+	
+	
+
+	
+
+
+
+}
+

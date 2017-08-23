@@ -27,7 +27,7 @@
 			<tx:method name="delete*" propagation="REQUIRED" />
 
 			<!--其他方法使用默认事务策略 -->
-			<tx:method name="*" />
+			<tx:method name="*"/>
 		</tx:attributes>
 	</tx:advice>
 	<aop:config>
