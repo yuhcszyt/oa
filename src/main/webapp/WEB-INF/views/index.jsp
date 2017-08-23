@@ -21,7 +21,7 @@
 		<div class="status">
 			<div class="global-width">
 				${u.rankStr} <font color="red">${u.userName }</font>
-				你好！${loginUser.username}欢迎访问青鸟办公管理系统！${loginUser}<a
+				你好！${loginUser.username}欢迎访问青鸟办公管理系统！<a
 					href="${pageContext.request.contextPath }/user/loginOut">注销</a>
 			</div>
 		</div>

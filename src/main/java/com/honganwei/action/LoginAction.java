@@ -31,12 +31,13 @@ public  class LoginAction extends BaseAction<TUser>{
 		
 		try {
 			//String result=MAPPER.writeValueAsString(user);
-			
+			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
 			ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
 			//3.2 发送
 			//if(result==null||result.equals("")){
 			//System.out.println(result);
 			if(user!=null){
+				
 				ServletActionContext.getResponse().getWriter().print("true");
 			}else{
 				ServletActionContext.getResponse().getWriter().print("flase");
@@ -56,7 +57,7 @@ public  class LoginAction extends BaseAction<TUser>{
 	
 	public String home(){
 		
-		return SUCCESS;
+		return "home";
 	}
 	
 	
