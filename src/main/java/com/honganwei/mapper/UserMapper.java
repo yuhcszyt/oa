@@ -14,6 +14,8 @@ public interface UserMapper{
 	public TUser selectUserByID(TUser user);
 
 	public List<TUser> findAll();
+	
+	public void editUser(String username, TUser model);
 
 }
 

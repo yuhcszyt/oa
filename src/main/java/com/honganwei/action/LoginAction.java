@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.honganwei.po.TUser;
 import com.honganwei.service.UserService;
+import com.honganwei.utils.LoginUtil;
 
 
 
@@ -36,7 +37,6 @@ public  class LoginAction extends BaseAction<TUser>{
 
 		try {
 			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
-			ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
 			ServletActionContext.getResponse().setContentType("text/html;charset=UTF-8");
 			
 			if(user!=null){
@@ -51,10 +51,20 @@ public  class LoginAction extends BaseAction<TUser>{
 		return null;
 	}
 
-	
-	public String updateUser(){
-		
-		return FINSH;
+	/*编辑用户*/
+	public String editUser() throws IOException{
+		String f ="1";
+		TUser user = LoginUtil.getLoginUser();
+		try {
+			/*获取当前用户*/
+			userService.editUser(user.getUsername(),model);
+		} catch (Exception e) {
+			 f ="0";
+			e.printStackTrace();
+		}
+		ServletActionContext.getResponse().setContentType("text/html;charset=utf-8");
+		ServletActionContext.getResponse().getWriter().print(f);
+		return NONE;
 	}
 	
 

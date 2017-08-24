@@ -16,5 +16,7 @@ public interface UserService {
 	
 	public List<TUser> find();
 
+	public void editUser(String username, TUser model);
+
 }
 

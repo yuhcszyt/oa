@@ -8,7 +8,28 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<!-- 导入jquery核心类库 -->
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script>
+<!-- 导入easyui类库 -->
+<link id="easyuiTheme" rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/js/easyui/themes/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/css/default.css">
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script>
+<!-- 导入ztree类库 -->
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/js/ztree/zTreeStyle.css"
+	type="text/css" />
+<script
+	src="${pageContext.request.contextPath }/js/ztree/jquery.ztree.all-3.5.js"
+	type="text/javascript"></script>
+<script
+	src="${pageContext.request.contextPath }/js/easyui/locale/easyui-lang-zh_CN.js"
+	type="text/javascript"></script>
 <script type="text/javascript" src="js/ajax.js"></script>
 <script type="text/javascript" src="js/member.js"></script>
 <script type="text/javascript" src="calendar/calendar.js"></script>
@@ -25,7 +46,33 @@
 			$("#pageTitle").html("编辑个人信息");
 			var backPath = $("#backPath").val();
 			var inserPath = $("#inserPath").val();
-			$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
+			$(".formSubBtn").html("<input id=\"fromSubmit\" type=\"button\" class=\"submit\" value=\"保存修改\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
+		});
+		
+		$("#fromSubmit").click(function(){
+			//进行表单校验
+			var v = $("#editform").form("validate");
+			if(v){
+				//表单校验通过，手动校验两次输入是否一致
+				var v1 = $("#password").val();
+				var v2 = $("#password2").val();
+				if(v1 == v2){
+					//两次输入一致，发送ajax请求
+					$.post("userAction_editPassword.action",{"password":v1},function(data){
+						if(data == '1'){
+							//修改成功，关闭修改密码窗口
+							$("#editPwdWindow").window("close");
+						}else{
+							//修改密码失败，弹出提示
+							$.messager.alert("提示信息","密码修改失败！","error");
+						}
+					});
+					$.messager.alert("提示信息","修改成功！","warning");
+				}else{
+					//两次输入不一致，弹出错误提示
+					$.messager.alert("提示信息","两次密码输入不一致！","warning");
+				}
+			}
 		});
 
 	});
@@ -34,13 +81,12 @@
 
 <body>
 	<input type="hidden" name="backPath" id="backPath" value="${pageContext.request.contextPath}/uiAction_frame_welcome.action" />
-	<input type="hidden" name="inserPath" id="inserPath" value="${pageContext.request.contextPath}/LoginAction_updateUser.action" />
 	<div class="action">
 		<div class="t">
 			<b id="pageTitle">个人信息</b>
 		</div>
 		<div class="pages">
-		<form action="${pageContext.request.contextPath }/user/update" method="post" onsubmit="return checkUserUpdate(${loginUserrank}, ${loginUserrank}, 'update', ${loginUserpassword });">
+		<form id="editform" action="${pageContext.request.contextPath }/LoginAction_updateUser.action" method="post" onsubmit="return checkUserUpdate(${loginUserrank}, ${loginUserrank}, 'update', ${loginUserpassword });">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0"
 				class="formTable">
 				<tr>
@@ -106,7 +152,7 @@
 				</tr>
 
 			</table>
-			<input type="hidden" id="userName" name="userName" value="${loginUseruserName }" />
+			<input type="hidden" id="userName" name="userName" value="${loginUser.username}" />
 			<div class="formSubBtn">
 				<span  class="submit" id="submit">编辑数据</span>
 			</div>

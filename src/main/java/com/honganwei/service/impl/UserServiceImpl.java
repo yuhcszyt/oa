@@ -32,6 +32,13 @@ public class UserServiceImpl implements UserService{
 }
 
 
+	/*编辑用户*/
+	public void editUser(String username, TUser model) {
+		
+		userMapper.editUser(username, model);
+	}
+
+
 	
 	
 	
