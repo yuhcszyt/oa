@@ -5,8 +5,12 @@
 <struts>
 
 	<package name="UserLogin" namespace="/" extends="struts-default">
-		<action name="userAction_*" class="com.honganwei.action.LoginAction" method="{1}">
-			<result name="login" >/WEB-INF/views/manage.jsp</result>
+
+		<action name="userAction_*" class="com.honganwei.action.LoginAction"
+			method="{1}">
+			<result name="login">/WEB-INF/views/login.jsp</result>
+			<result name="home">/WEB-INF/views/index.jsp</result>
+
 		</action>
 	</package>
 
