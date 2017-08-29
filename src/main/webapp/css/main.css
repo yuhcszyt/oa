@@ -1,0 +1,71 @@
+/* *{
+	font-size:12px;
+}
+body{
+	visibility:hidden;
+}
+#loading-mask{
+	position:absolute;
+	background:#F2FBFF;
+	visibility:visible;
+	display:block;
+	width:100%;
+	height:100%;
+	filter:alpha(opacity=80);
+	opacity:0.80;
+	z-index:999999999;
+}
+#loading-msg{
+	width:150px;
+	margin:10px auto;
+	padding:5px 10px;
+	text-align:center;
+	font-weight:bold;
+	font-size:14px;
+	color:#fff;
+	background:#aaa;
+}
+.easyui-menu{
+	display:none;
+}
+form{
+	margin:0;
+	padding:0;
+}
+.login{
+	background:url('images/login_01.gif') no-repeat;
+}
+.mainwrap{
+	//width:960px;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+	background:#fff;
+}
+
+.topmenu{
+	background:#eee url('images/btn.jpg') repeat-x;
+	width:100%;
+} */
+.toptitle{
+	position:absolute;
+	left:20px;
+	color:red;
+	font-size:16px;
+	font-weight:bold;
+}
+
+/*登录页面添加 蕾姆*/
+.leimu{
+   /*  background-image: url('images/744632675023512131.jpg'); */
+   background: #ff0000 url(../images/744632675023512131.jpg) no-repeat fixed center; 
+}
+
+.maintitle{
+	position:absolute;
+	left:15px;
+	color:#fff;
+	font-size:16px;
+	font-weight:bold;
+	padding:5px;
+}
