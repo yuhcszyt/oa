@@ -9,14 +9,17 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script>
+
 <!-- 导入easyui类库 -->
  <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/js/easyui/themes/icon.css">
 	
-	
 
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/css/member.css">
+	
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script> 
 <script type="text/javascript"
@@ -25,8 +28,8 @@
 
 <%--导入这句css就报错,页面看不了  <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath }/css/main.css">   --%>
+	
 <style type="text/css"> 
-
 .toptitle{
 	position:absolute;
 	left:20px;
@@ -43,9 +46,11 @@
 	font-weight:bold;
 	padding:5px;
 }
+.leimu{
+    background-image: url('images/744632675023512131.jpg');
+   background: #ff0000 url(../images/744632675023512131.jpg) no-repeat fixed center; 
+}
 </style> 
-
-
 
 
 <body>
@@ -68,7 +73,7 @@
 	<div class="login-copyright"></div> --%>
 
 
-	<div id="mainwindow" class="easyui-window"
+	<div id="mainwindow" class="easyui-window leimu"
 		style="width: 600px; height: 300px; background:#fafafa; overflow: hidden"
 		title="登录" border="false" resizable="false" draggable="false"
 		minimizable="false" maximizable="false">
@@ -107,6 +112,11 @@
 	</div>
 </body>
 <script type="text/javascript">
+
+$(function(){
+	$("#mainwindow").css("background-image","url(${pageContext.request.contextPath}/images/744632675023512131.jpg)");
+})
+
 function clearAll(){
 	document.getElementById('LOGINNAME').value="";
 	document.getElementById('PASSWORD').value="";
@@ -123,22 +133,25 @@ $("#btnLogin").click(function(){
 		$.messager.alert("提示消息", "用户名、密码都不能为空!", "info");
 		return;
 	}
+
+	var condition = {"username":LOGINNAME,"password":PASSWORD};		
+/* 	condition = JSON.stringify(condition); 
+    condition = escape(encodeURIComponent(condition));			 */
+	var url='${pageContext.request.contextPath}/userAction_login.action';
 	
-	var condition = {"LOGINNAME":LOGINNAME,"PASSWORD":PASSWORD};		
-	condition = JSON.stringify(condition); 
-    condition = escape(encodeURIComponent(condition));			
-	var url='userAction_login.action?condition='+condition;
-	
-    	$.ajax( {
+    	$.ajax({
     	type : "post",
 		url : url,
-		contentType : "text/html",
+		data: condition,
+		dataType:'json',
 		error : function(event,request, settings) {
 			$.messager.alert("提示消息", "请求失败!", "info");
 		},
 		success : function(data) { 
-			if(data.total>0){
-				window.location.href="${pageContext.request.contextPath}/userAction_home.action";   
+			if(!JUDGE.isNull(data)){
+				if(data.msg=='OK'){
+					window.location.href="${pageContext.request.contextPath}/userAction_home.action";   
+				}
 			}
 			else{
 				$.messager.alert("提示消息", "用户名或密码错误!", "info");
