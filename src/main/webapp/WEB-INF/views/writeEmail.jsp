@@ -16,16 +16,15 @@
 				<tr>
 					<td align="right" width="30%">收件人：</td>
 
-
 					<td align="left"><s:select list="userList" name="username"
 				listKey="username" listValue="username"
 				headerKey="" headerValue="----请--选--择----"
-			>
-			</s:select></td>
+			>  
+			</s:select></td> 
 				</tr>
 				<tr>
 					<td align="right" width="30%">邮件标题：</td>
-					<td align="left"><s:textfield name="title"></s:textfield></td>
+					<td align="left"><s:textfield name="title" value="${user}"></s:textfield></td>
 				</tr>
 				<tr>
 					<td align="right" width="30%">邮件内容：</td>
@@ -34,7 +33,7 @@
 				<tr>
 					<td align="right" width="30%">上传文件：</td>
 					<td align="left"> <s:file name="" label="选择上传的文件" /></td>
-				</tr>
+				</tr>  
 				<tr>
 					<td align="center" width="30%"><s:submit value="发送邮件"/></td>
 					</td>

@@ -8,13 +8,22 @@
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+
 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-<script type="text/javascript" src="js/ajax.js"></script>
-<script type="text/javascript" src="js/member.js"></script>
-<script type="text/javascript" src="calendar/calendar.js"></script>
+<!-- 导入easyui类库 -->
+<%--  <link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/js/easyui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css"
+	href="${pageContext.request.contextPath }/js/easyui/themes/icon.css"> --%>
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/easyui/jquery.easyui.min.js"></script> 
+
+
 <script type="text/javascript">
+console.info("${loginUser.password}");
 	$(function() {
-	
 		$("input").attr("disabled", true);
 		$("select").attr("disabled", true);
 
@@ -26,7 +35,6 @@
 			var backPath = $("#backPath").val();
 			$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
 		});
-
 	});
 </script>
 </head>
@@ -34,19 +42,20 @@
 <body>
 	<input type="hidden" name="backPath" id="backPath" value="${pageContext.request.contextPath}/uiAction_frame_welcome.action" />
 	<input type="hidden" name="inserPath" id="inserPath" value="${pageContext.request.contextPath}/LoginAction_updateUser.action" />
+	<input type="hidden" name="id" id="${loginUser.id}" value="${pageContext.request.contextPath}/LoginAction_updateUser.action" />
 	<div class="action">
 		<div class="t">
 			<b id="pageTitle">个人信息</b>
 		</div>
 		<div class="pages">
-		<form action="${pageContext.request.contextPath }/user/update" method="post" onsubmit="return checkUserUpdate(${loginUserrank}, ${loginUserrank}, 'update', ${loginUserpassword });">
+		<form id="userInfo" action="${pageContext.request.contextPath }/user/update" method="post" onsubmit="return checkUserUpdate(${loginUser.rank}, ${loginUser.rank}, 'update', ${loginUser.password });">
 			<table width="100%" border="0" cellspacing="0" cellpadding="0"
 				class="formTable">
 				<tr>
 					<td align="right" width="30%">原密码：</td>
 					<td align="left" width="70%">
-					<input type="text" name="opassword" id="opassword" class="input" value="${loginUser.password}" onblur="return check_opassword(${loginUserpassword });" />
-					<span id="opassword_text">
+					<input type="text" name="password" id="password" class="input" value="${loginUser.password}" onblur="return check_opassword(${loginUser.password });" />
+					<span id="password_text">
 					<font color=red>*</font> 为空时不修改密码</span></td>
 				</tr>
 				<tr>
@@ -64,24 +73,24 @@
 				</tr>
 				<tr>
 					<td align="right">生日：</td>
-					<td align="left"><input type="text" id="birthdayInput" name="birthdayInput" class="input dateTimeInput" readonly
+					<td align="left"><input type="text" id="birthdayInput" name="birthday" class="input dateTimeInput" readonly
 						value="<fmt:formatDate value="${loginUser.birthday}" pattern="yyyy-MM-dd" />" onblur="return check_birthday();" /> <span id="birthday_text"><font color=red>*</font></span></td>
 				</tr>
 				<style>div.calendar{margin-top:266px}</style>
 				<script type="text/javascript">
 				date = new Date();
-				Calendar.setup({
+				/* Calendar.setup({
 					inputField     :    "birthdayInput",
 					ifFormat       :    "%Y-%m-%d",
 					weekNumbers : false
-				});
+				}); */
 				</script>
 				<tr>
 					<td align="right">性别：</td>
 					<td align="left"><label><input type="radio" name="sex"
-							value="1" <c:if test="${loginUsersex==1}">checked</c:if> /> 男</label> <label><input
+							value="1" <c:if test="${loginUser.sex==1}">checked</c:if> /> 男</label> <label><input
 							type="radio" name="sex" value="2"
-							<c:if test="${loginUsersex==2}">checked</c:if> /> 女</label> <span id="sex_text"></span></td>
+							<c:if test="${loginUser.sex==2}">checked</c:if> /> 女</label> <span id="sex_text"></span></td>
 				</tr>
 				<tr>
 					<td align="right">手机：</td>
@@ -92,7 +101,7 @@
 				<tr>
 					<td align="right">地址：</td>
 					<td align="left"><input type="text" name="address"
-						value="${loginUser.address }" id="address" class="input" /> <span id="address_text"></span>
+						value="${user.address }" id="address" class="input" /> <span id="address_text"></span>
 					</td>
 				</tr>
 				<tr>
@@ -103,15 +112,41 @@
 					<label><input type="radio" name="rank" value="2" onblur="return check_rank(${loginUser.rank}, ${loginUserrank}, 'update');" <c:if test="${loginUserrank==2}">checked</c:if> /> 普通用户</label>
 					 <span id="rank_text"></span></td>
 				</tr>
-
 			</table>
-			<input type="hidden" id="userName" name="userName" value="${loginUseruserName }" />
+			<input type="hidden" id="userName" name="userName" value="${loginUseruserName}" />
 			<div class="formSubBtn">
+					<!-- 	$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> 
+						<input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />"); -->
+				<input type="button" class="back" value="返回" style="display:none;">
+				<input type="button" class="back" value="返回" style="display:none;">
 				<span  class="submit" id="submit">编辑数据</span>
 			</div>
 		</form>
 
 		</div>
-	</div>
 </body>
+	</div>
 </html>
+<script type="text/javascript">
+	function updateUser(){
+		
+		$.ajax({
+			type:'post',
+			dateType:'json',
+			url:'${pageContext.request.contextPath}/userInfo.action',
+			data:$("#userInfo").serializ(),
+			success:function(data){
+				if(data.msg='OK'){
+					$("input").attr("disabled", false);
+					$("select").attr("disabled", false);
+					$("#pageTitle").html("编辑个人信息");
+					var backPath = $("#backPath").val();
+					$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
+					}else{
+						$.messager.alert("提示消息", "错误!", "info");
+					}
+				}
+			}
+		);
+	}
+</script>

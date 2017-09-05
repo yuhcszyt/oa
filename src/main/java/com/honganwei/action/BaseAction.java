@@ -7,11 +7,25 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
+import util.SysResult;
+
 public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 
 	public static final ObjectMapper MAPPER =new ObjectMapper();
 	
+	public SysResult sysResult;
 	
+	
+	public SysResult getSysResult() {
+		return sysResult;
+	}
+
+	public void setSysResult(SysResult sysResult) {
+		this.sysResult = sysResult;
+	}
+
+
+
 	public static final String HOME = "home";
 	public static final String FINSH = "finsh";
 	

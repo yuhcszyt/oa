@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class TUser implements java.io.Serializable {
 
-
+	private Integer id;
 	private String username;
 	private String password;
 	private String nickname;
@@ -16,7 +16,24 @@ public class TUser implements java.io.Serializable {
 	private Integer rank;
 	private Date regtime;
 	private String regip;
+	private Date updateTime;
 	
+	public Date getUpdateTime() {
+		return updateTime;
+	}
+
+	public void setUpdateTime(Date updateTime) {
+		this.updateTime = updateTime;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 	public TUser() {
 	}
 	
@@ -61,7 +78,7 @@ public class TUser implements java.io.Serializable {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
-	}
+	}  
 	public Date getBirthday() {
 		return birthday;
 	}
@@ -80,7 +97,7 @@ public class TUser implements java.io.Serializable {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getAddress() {
+	public String getAddress() { 
 		return address;
 	}
 	public void setAddress(String address) {

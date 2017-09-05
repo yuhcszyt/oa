@@ -7,11 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts2.ServletActionContext;
 import com.honganwei.po.TUser;
 import com.honganwei.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
 
 import util.SysResult;
 
@@ -25,6 +27,7 @@ public  class LoginAction extends BaseAction<TUser>{
 
 	@Autowired
 	private UserService userService;
+	
 	
 	
 	//xiaopeng	start
@@ -54,7 +57,8 @@ public  class LoginAction extends BaseAction<TUser>{
 				 
 				 response.getWriter().println(jsonData);
 				//写入session
-				 ServletActionContext.getRequest().getSession().setAttribute("user", user);
+				 ServletActionContext.getRequest().getSession().setAttribute("loginUser", user);
+				// ActionContext.getContext().put("loginUser", user);
 			}
 			
 		/*	JSONArray jsonuserlist = JsonUtil.fromObject(userlist);
@@ -86,9 +90,11 @@ public  class LoginAction extends BaseAction<TUser>{
 			return null;
 		}
 		
-		
 
 	public String home(){
+		
+		
+		
 		
 		return HOME;
 	}

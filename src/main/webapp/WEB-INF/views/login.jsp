@@ -88,7 +88,7 @@
 					<table cellpadding="0" cellspacing="3">
 						<tr>
 							<td>登录帐号</td>
-							<td><input id="LOGINNAME" style="width:114px;"></input></td>
+							<td><input id="LOGINNAME" style="width:114px;" value=""></input></td>
 						</tr>
 						<tr>
 							<td>登录密码</td>

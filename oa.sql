@@ -2,30 +2,25 @@
 CREATE DATABASE OA;
 USE OA;
 
-CREATE TABLE t_user (
-  username VARCHAR(10),
+
+CREATE TABLE `t_user` (
+  `username` VARCHAR(10) NOT NULL,
   `password` VARCHAR(30) NOT NULL,
-  nickname VARCHAR(30), 
-  birthday DATE, 
-  sex INT DEFAULT 1, 
-  mobile VARCHAR(30), 
-  address VARCHAR(100), 
-  rank INT DEFAULT 2, 
-  regtime DATE, 
-  regip VARCHAR(20),
-  PRIMARY KEY(`username`)
-);
+  `nickname` VARCHAR(30) DEFAULT NULL,
+  `birthday` DATE DEFAULT NULL,
+  `sex` INT(11) DEFAULT '1',
+  `mobile` VARCHAR(30) DEFAULT NULL,
+  `address` VARCHAR(100) DEFAULT NULL,
+  `rank` INT(11) DEFAULT '2',
+  `id` INT(11) NOT NULL AUTO_INCREMENT,
+  `updateTime` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=INNODB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8
 
-INSERT INTO t_user (`username`,`password`,nickname,birthday,sex,mobile,address,rank,regtime,regip)
-VALUES ('111111','系统管理员',to_date('1980/3/3','YYYY-MM-DD'),1,'13800138001','广东省深圳市',,'127.0.0.1');
-
-INSERT INTO `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ( '111111','A经理','123','1','123','123','2',SYSDATE(),'123');
-
-INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','A经理',STR_TO_DATE('1987/5/21','YYYY-MM-DD'),1,'13800138002','广东省深圳市',1,SYSDATE(),'127.0.0.1');
-INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','B经理',STR_TO_DATE('1985/9/30','YYYY-MM-DD'),1,'13800138003','广东省深圳市',1,SYSDATE(),'127.0.0.1');
-INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','A员工',STR_TO_DATE('1990/8/13','YYYY-MM-DD'),1,'13800138004','广东省深圳市',2,SYSDATE(),'127.0.0.1');
-INSERT INTO  `oa`.`t_user`(`password`,`nickname`,`birthday`,`sex`,`mobile`,`address`,`rank`,`regtime`,`regip`) VALUES ('111111','B员工',STR_TO_DATE('1988/11/6','YYYY-MM-DD'),1,'13800138005','广东省深圳市',2,SYSDATE(),'127.0.0.1');
-
+insert into `t_user` (`username`, `password`, `nickname`, `birthday`, `sex`, `mobile`, `address`, `rank`, `regtime`, `regip`, `id`) values('546345','111111','A经理','2015-06-04','1','123','123','2','2017-08-06','123','1');
+insert into `t_user` (`username`, `password`, `nickname`, `birthday`, `sex`, `mobile`, `address`, `rank`, `regtime`, `regip`, `id`) values('65','213','123','2015-06-04','1',NULL,NULL,'2',NULL,NULL,'2');
+insert into `t_user` (`username`, `password`, `nickname`, `birthday`, `sex`, `mobile`, `address`, `rank`, `regtime`, `regip`, `id`) values('admin','admin','admin','2015-06-04','1',NULL,NULL,'2',NULL,NULL,'3');
 -- 创建邮件表
 CREATE TABLE `t_email` (
   `id` INT(4) NOT NULL AUTO_INCREMENT,

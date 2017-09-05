@@ -23,7 +23,7 @@
 							<dt onclick="this.parentNode.className=this.parentNode.className=='open'?'':'open';">信息管理 
 						</dt>
 						<dd>
-							<a href="forward.action" target="_self">个人信息</a>
+							<a href="${pageContext.request.contextPath}/userInfo.action" target="main">个人信息</a>
 						</dd>
 					</dl>
 					<dl>

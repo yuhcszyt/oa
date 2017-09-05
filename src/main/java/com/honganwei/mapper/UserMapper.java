@@ -15,5 +15,6 @@ public interface UserMapper{
 
 	public List<TUser> findAll();
 
+	public void updateUser(TUser user);
 }
 

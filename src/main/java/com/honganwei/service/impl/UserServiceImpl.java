@@ -32,6 +32,23 @@ public class UserServiceImpl implements UserService{
 }
 
 
+	@Override
+	public boolean updateUser(TUser user) {
+
+		boolean flag=true;
+		
+		try {
+			userMapper.updateUser(user);
+		} catch (Exception e) {
+			flag=false;
+		}
+		
+		return flag;
+	}
+
+
+
+
 	
 	
 	

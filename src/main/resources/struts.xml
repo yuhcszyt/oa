@@ -17,13 +17,37 @@
 		
 	</package>
 
-
-	
-
-	
+	 <package name="json-default" extends="struts-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types>
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+            <interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
+        </interceptors>
+    </package>
 
 	<include file="struts2/struts2-tuser.xml"></include>
 	<include file="struts2/struts2-temail.xml"></include>			  
 
+<!-- 一下是华大基因的,用来参考
+ <package name="json-default" extends="struts-default">
+        <result-types>
+            <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+        </result-types>
+        <interceptors>
+            <interceptor name="json" class="org.apache.struts2.json.JSONInterceptor"/>
+            <interceptor name="jsonValidation" class="org.apache.struts2.json.JSONValidationInterceptor"/>
 
+            Sample JSON validation stack
+            <interceptor-stack name="jsonValidationWorkflowStack">
+                <interceptor-ref name="basicStack"/>
+                <interceptor-ref name="validation">
+                    <param name="excludeMethods">input,back,cancel</param>
+                </interceptor-ref>
+                <interceptor-ref name="jsonValidation"/>
+                <interceptor-ref name="workflow"/>
+            </interceptor-stack>
+        </interceptors>
+    </package> -->
 </struts>
