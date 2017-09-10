@@ -23,32 +23,37 @@
 
 <script type="text/javascript">
 console.info("${loginUser.password}");
-	$(function() {
-		$("input").attr("disabled", true);
+	  $(function() {
+		$("table input").attr("disabled", true);
 		$("select").attr("disabled", true);
-
+		
+		
+		
 		//$("#submit").bind("click", function(){**************});
-		$("#submit").click(function(){
+		/* $("#submit").click(function(){
 			$("input").attr("disabled", false);
 			$("select").attr("disabled", false);
 			$("#pageTitle").html("编辑个人信息");
 			var backPath = $("#backPath").val();
 			$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
-		});
-	});
+		}); */
+	}); 
+	  
 </script>
 </head>
 
 <body>
 	<input type="hidden" name="backPath" id="backPath" value="${pageContext.request.contextPath}/uiAction_frame_welcome.action" />
 	<input type="hidden" name="inserPath" id="inserPath" value="${pageContext.request.contextPath}/LoginAction_updateUser.action" />
-	<input type="hidden" name="id" id="${loginUser.id}" value="${pageContext.request.contextPath}/LoginAction_updateUser.action" />
+	
 	<div class="action">
 		<div class="t">
 			<b id="pageTitle">个人信息</b>
 		</div>
 		<div class="pages">
-		<form id="userInfo" action="${pageContext.request.contextPath }/user/update" method="post" onsubmit="return checkUserUpdate(${loginUser.rank}, ${loginUser.rank}, 'update', ${loginUser.password });">
+		<form id="userInfo"  method="post" onsubmit="return checkUserUpdate(${loginUser.rank}, ${loginUser.rank}, 'update', ${loginUser.password });">
+		<input type="hidden" name="username" id="username" value="${loginUser.username}" />
+		<input type="hidden" name="id" id="id" value="${loginUser.id}" />
 			<table width="100%" border="0" cellspacing="0" cellpadding="0"
 				class="formTable">
 				<tr>
@@ -117,31 +122,50 @@ console.info("${loginUser.password}");
 			<div class="formSubBtn">
 					<!-- 	$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> 
 						<input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />"); -->
-				<input type="button" class="back" value="返回" style="display:none;">
-				<input type="button" class="back" value="返回" style="display:none;">
-				<span  class="submit" id="submit">编辑数据</span>
+				<input type="button" class="submit"  value="保存修改" style="display:none;" onclick="updateUser();"/>
+				<input type="button" class="back" value="返回" style="display:none;" onclick="toggleUser();"/>
+				<!-- <span  class="submit" id="submit">编辑数据</span> -->
+				<input type="button"  class="submit" value="编辑数据" onclick="toggleUser()" />
+				<!-- onclick没反应 -->
 			</div>
 		</form>
-
 		</div>
 </body>
 	</div>
 </html>
 <script type="text/javascript">
+
+	function toggleUser(){
+	alert("ss222")
+		var disable=$("table input").attr("disabled");
+		
+		if(disable=='disabled'){
+		     $("table input").attr("disabled",false);
+		     $("select").attr("disabled",false);
+		}else{
+			 $("table input").attr("disabled",true);
+		     $("select").attr("disabled",true);
+		}
+		
+		$("input[value='保存修改']").toggle();
+		$("input[value='返回']").toggle();
+		$("input[value='编辑数据']").toggle();
+	}
+
 	function updateUser(){
 		
 		$.ajax({
 			type:'post',
 			dateType:'json',
-			url:'${pageContext.request.contextPath}/userInfo.action',
-			data:$("#userInfo").serializ(),
+			url:'${pageContext.request.contextPath}/userInfo_updateUser.action',
+			data:$("#userInfo").serialize(),
 			success:function(data){
-				if(data.msg='OK'){
-					$("input").attr("disabled", false);
-					$("select").attr("disabled", false);
-					$("#pageTitle").html("编辑个人信息");
-					var backPath = $("#backPath").val();
-					$(".formSubBtn").html("<input type=\"submit\" class=\"submit\" value=\"保存修改\" onclick=\"location.href='"+inserPath+"';\" /> <input type=\"button\" class=\"back\" value=\"返回\" onclick=\"location.href='"+backPath+"';\" />");
+				if(data.ok='ok'){
+					$("table input").attr("disabled", true);
+					$("select").attr("disabled",true);
+					$("input[value='保存修改']").toggle();
+					$("input[value='返回']").toggle();
+					$("input[value='编辑数据']").toggle();
 					}else{
 						$.messager.alert("提示消息", "错误!", "info");
 					}

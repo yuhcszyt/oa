@@ -10,10 +10,9 @@
 			method="{1}">
 			<result name="login">/WEB-INF/views/login.jsp</result>
 			<result name="home">/WEB-INF/views/index.jsp</result>
-			<result name="userInfo">/WEB-INF/views/welcome.jsp</result>
+			<result >/WEB-INF/views/frame/welcome.jsp</result>
 		</action>
-			<action name="userInfo">
-				<result>/WEB-INF/views/frame/welcome.jsp</result>
+			<action name="userInfo_*" class="com.honganwei.action.UserAction" method="{1}">
 				<result type="json" name="json">
 					    <param name="root">sysResult</param>
 				</result>

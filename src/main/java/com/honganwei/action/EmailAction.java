@@ -22,7 +22,7 @@ import com.opensymphony.xwork2.ActionContext;
 
 import util.PageBean;
 
-public class EmailAction extends BaseAction<TEmail>{
+public  class EmailAction extends BaseAction<TEmail>{
 	
     private File  uploadFile; //得到上传的文件
     private String uploadFileContentType; //得到文件的类型

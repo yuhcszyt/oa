@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<if test="videoId != null and videoId != ''" >
         	M.VIDEO_ID = #{videoId, jdbcType=VARCHAR},
       	</if> -->
-			<if test="username!=null and usernmae!=''">
+			<if test="username!=null and username!=''">
 			    t.username=#{username},
 			</if>		
 			<if test="password!=null and password!=''">

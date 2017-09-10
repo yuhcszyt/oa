@@ -29,7 +29,7 @@ public class UserServiceImpl implements UserService{
 	 */
 	public List<TUser> find() {
 		return userMapper.findAll();
-}
+	}
 
 
 	@Override
@@ -40,6 +40,7 @@ public class UserServiceImpl implements UserService{
 		try {
 			userMapper.updateUser(user);
 		} catch (Exception e) {
+			e.printStackTrace();
 			flag=false;
 		}
 		
