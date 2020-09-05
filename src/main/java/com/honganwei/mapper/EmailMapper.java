@@ -17,14 +17,14 @@ public interface EmailMapper extends BaseMapper<TEmail>{
 	 * @param recipients
 	 * @return
 	 */
-	public int findCount(TEmail Temail);
+	//public int findCount(TEmail Temail);
 
-	
-	public void  updateIsDelete(TEmail email);
-	
-	
-	public void  deletEmail(TEmail email);
-	
-	
-	
+
+	//public void  updateIsDelete(TEmail email);
+
+
+	//public void  deletEmail(TEmail email);
+
+
+
 }
