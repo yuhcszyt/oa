@@ -10,7 +10,7 @@ public interface EmailMapper extends BaseMapper<TEmail>{
 	
 	public TEmail selectById(int id);
 
-	public List<TEmail> selectByPage(Map map);
+	//public List<TEmail> selectByPage(Map map);
 
 	/**
 	 * 根据接受人,查询接受的数量
