@@ -17,8 +17,6 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserMapper userMapper;
 
-
-	@Override
 	public TUser login(TUser user) {
 		return userMapper.selectUserByID(user);
 	}
@@ -27,10 +25,10 @@ public class UserServiceImpl implements UserService{
 	/**
 	 * 查询所有的用户
 	 */
+	@Override
 	public List<TUser> find() {
 		return userMapper.findAll();
 	}
-
 
 	@Override
 	public boolean updateUser(TUser user) {
