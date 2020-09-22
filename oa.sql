@@ -1,6 +1,6 @@
 
 CREATE DATABASE  OA;
-USE OA;
+USE OA;f
 
 
 CREATE TABLE `t_user` (
